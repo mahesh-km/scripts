@@ -1,4 +1,4 @@
 scripts
 =======
 
-Some scripts
+Some interesting scripts.
