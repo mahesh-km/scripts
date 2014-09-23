@@ -1,0 +1,3 @@
+https://chrome.google.com/webstore/search/remote%20desktop?hl=en-US
+
+ffmpeg -i ads.mpg -qscale .1 -s 1024x960 -ac 2 -y final.mpg

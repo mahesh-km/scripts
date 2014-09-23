@@ -1,0 +1,19 @@
+#!/bin/bash
+
+#echo "buring Process Starts"
+
+echo "Start Buring Process (Type Yes/No)?"
+read conform
+#echo "$conform"
+if [ $conform == yes -o $conform == YES -o $conform == y -o $conform == Y ]
+then
+sudo mount | grep LIVE
+#echo "$mount"
+fi
+
+
+
+
+
+
+

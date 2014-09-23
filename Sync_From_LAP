@@ -1,0 +1,27 @@
+#!/bin/bash
+#script for taking backup from (livecd_world and current working)
+
+echo "starting sync from LAP.................................>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+echo "sync LiveCD_World"
+
+rsync -azv root@192.168.1.102:/opt/LiveCD_World/  /opt/LiveCD_World/
+
+
+echo "LiveCD_World sync complited"
+
+echo "--------------------------------------------------------------------------------------"
+
+echo "Start Sync Current working"
+
+rsync -azv root@192.168.1.102:/media/HDD-180/Current_Working/ /media/HDD\ 500/Current_Working/ 
+
+echo "Current working Sync Comlited "
+
+echo "All sync comlitted !"
+
+
+
+
+
+
