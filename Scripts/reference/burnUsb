@@ -1,5 +1,0 @@
-#!/bin/bash
-
-echo "Burning USB"
-
-livecd-iso-to-disk  --reset-mbr Vyoma.iso  /dev/sdb1
