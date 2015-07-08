@@ -1,0 +1,1000 @@
+  239  cd ../
+  240  ls
+  241  cp -v etc-monit.d-uts/hide-mouse etc-monit.d-uts-single/
+  242  cp -v etc-monit.d-uts/logging etc-monit.d-uts-single/
+  243  cp -v etc-monit.d-uts/readtty-port1 etc-monit.d-uts-single/
+  244  cp -v etc-monit.d-uts/start-ads-screen1 etc-monit.d-uts-single/
+  245  cp -v etc-monit.d-uts/start-ticket-screens-screen1 etc-monit.d-uts-single/
+  246  ls
+  247  chmod -R 755 etc-monit.d-uts-single
+  248  chmod -R 755 etc-monit.d-uts
+  249  chmod -R 755 etc-monit.d-prs-connoi
+  250  cd etc-monit.d-uts-db
+  251  ls
+  252  ll
+  253  cd ../etc-monit.d-uts
+  254  ll
+  255  cd ../etc-monit.d-uts-single/
+  256  ll
+  257  cd ../
+  258  ll
+  259  ls
+  260  cd etc-monit.d-uts-db
+  261  ls
+  262  ll
+  263  cd ../
+  264  ls
+  265  cp -v etc-monit.d-uts-db/hide-mouse etc-monit.d-uts-db-single/
+  266  cp -v etc-monit.d-uts-db/logging etc-monit.d-uts-db-single/
+  267  cp -v etc-monit.d-uts-db/readtty-port1 etc-monit.d-uts-db-single/
+  268  cp -v etc-monit.d-uts-db/start-ads-screen1 etc-monit.d-uts-db-single/
+  269  cp -v etc-monit.d-uts-db/start-ticket-screens-screen1 etc-monit.d-uts-db-single/
+  270  ls
+  271  cd etc-monit.d-uts-db-single/
+  272  ll
+  273  cd ../
+  274  ls
+  275  chmod -R 755 etc-monit.d-uts-db-single
+  276  chmod -R 755 etc-monit.d-uts-db
+  277  cd etc-monit.d-uts-db
+  278  ls
+  279  ll
+  280  cd ../
+  281  ls
+  282  ll
+  283  ls
+  284  ll
+  285  ls etc-monit.d-prs-connoi-single/
+  286  ls etc-monit.d-uts-single/
+  287  ls etc-monit.d-uts-db-single/
+  288  cd etc-monit.d-uts-db-single/
+  289  vi readtty-port1 
+  290  ls
+  291  ll
+  292  ls-al
+  293  ls -al
+  294  cd ../
+  295  ls
+  296  cd ../bin/
+  297  ls
+  298  vi provisoner 
+  299  ls
+  300  cd ../../../
+  301  ls
+  302  cd ../
+  303  ls
+  304  cd var/www/html/screen1/livedata/
+  305  ls
+  306  touch name
+  307  touch number
+  308  touch status
+  309  ls
+  310  ll
+  311  cd ../
+  312  cd screen2/livedata/
+  313  ll
+  314  ls
+  315  touch name
+  316  touch number
+  317  touch status
+  318  ls
+  319  cd ../../
+  320  ls
+  321  cd ../
+  322  ls
+  323  cd etc/logrotate.d/
+  324  ls
+  325  touch ddis_log
+  326  vi ddis_log 
+  327  cd ../
+  328  vi logrotate.conf 
+  329  cd rc.d/
+  330  vi rc.local 
+  331  cd ../
+  332  vi rc.d/rc.local 
+  333  if [ -f /mnt/logs/audit-screen1.log ] || [ -f /mnt/logs/audit-screen2.log ]; then     for f in /mnt/logs/*.log;     do       size=`wc -c < ${f}`;       if [ ${size} -gt 5242880 ];       then           echo "More than 5Mb log file found.";           rm -f /mnt/logs/*.big;           tail -n 1000 ${f} >> ${f}.big;           rm -f ${f};       fi;     done; /usr/sbin/logrotate /etc/logrotate.conf; fi
+  334  ls
+  335  cd ../
+  336  cd home/vyoma/vyoma-media/bin/
+  337  vi sync-usbmedia 
+  338  cd ../
+  339  ls
+  340  cd prs/
+  341  ls
+  342  cd AP/
+  343  ls
+  344  vi BrowserConfig.xml 
+  345  cd ../
+  346  cd KA/
+  347  vi BrowserConfig.xml 
+  348  cd ../
+  349  cd AP/
+  350  vi BrowserConfig.xml 
+  351  cd ../
+  352  ls
+  353  cd MH/
+  354  ls
+  355  ls
+  356  vi BrowserConfig.xml 
+  357  cd ../
+  358  ls
+  359  cd ../
+  360  cd uts
+  361  ls
+  362  cd AP/
+  363  ls
+  364  vi BrowserConfig.xml 
+  365  ls
+  366  cd ../
+  367  cd AP/
+  368  vi BrowserConfig.xml 
+  369  cd ../
+  370  cd KA/
+  371  ls
+  372  vi BrowserConfig.xml 
+  373  cd ../
+  374  ls
+  375  cd MH/
+  376  vi BrowserConfig.xml 
+  377  ls
+  378  cd ../
+  379  ls
+  380  cd ../
+  381  ls
+  382  cd ssh/
+  383  ls
+  384  cd ../
+  385  ls
+  386  cd bin/
+  387  ls
+  388  vi collecting-log 
+  389  cd ../../
+  390  ls
+  391  cd ../
+  392  ls
+  393  cd ../
+  394  ls
+  395  cd  var/log/
+  396  ls
+  397  cd ../
+  398  ls
+  399  cd ../
+  400  ls
+  401  cd /opt/LiveCD_World/Developing_Images/Merge_Sync_And_Nonsync/Logcollection/Live/LiveOS/
+  402  ls
+  403  rm squashfs.img 
+  404  mksquashfs squashfs-root/ squashfs.img -comp xz
+  405  ls
+  406  rm -rf squashfs-root
+  407  ls
+  408  cd ../../
+  409  ls
+  410  mkisofs -J -r -hide-rr-moved -hide-joliet-trans-tbl -V Vyoma-merge2 -o Vyoma.iso -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-info-table -boot-load-size 4 Live
+  411  isohybrid  Vyoma.iso
+  412  implantisomd5 Vyoma.iso
+  413  ls
+  414  mount
+  415  ls
+  416  mount
+  417  umount /dev/sdc1
+  418  livecd-iso-to-disk  --reset-mbr Vyoma.iso  /dev/sdc1
+  419  ls
+  420  mount
+  421  umount /dev/sdc1
+  422  livecd-iso-to-disk  --reset-mbr Vyoma.iso  /dev/sdc1
+  423  cd ../
+  424  ls
+  425  cd ../
+  426  ls
+  427  cd HDMI
+  428  ls
+  429  cd Live/LiveOS/
+  430  ls
+  431  umount /mnt/Live 
+  432  umount /mnt/fs 
+  433  unsquashfs squashfs.img 
+  434  ls
+  435  cd squashfs-root/LiveOS/
+  436  mount ext3fs.img /mnt/fs/ -t ext2 -o loop
+  437  cd /mnt/
+  438  cd fs
+  439  ls
+  440  cd home/vyoma/vyoma-media/bin/
+  441  cd ../conf
+  442  ls
+  443  ll
+  444  cd ../bin/
+  445  ls
+  446  vi provisoner 
+  447  cd ../../../../
+  448  cd etc/rc.d/
+  449  vi rc.local 
+  450  cd ../../home/vyoma/vyoma-media/bin/
+  451  ll
+  452  umount /mnt/fs 
+  453  cd /
+  454  umount /mnt/fs 
+  455  umount /mnt/Live
+  456  cd /opt/LiveCD_World/Developing_Images/
+  457  ls
+  458  cd Merge_Sync_And_Nonsync/Logcollection/
+  459  ls
+  460  cd Live/LiveOS/
+  461  ls
+  462  unsquashfs squashfs.img 
+  463  ls
+  464  cd squashfs-root/LiveOS/
+  465  ls
+  466  mount ext3fs.img /mnt/fs/ -t ext2 -o loop
+  467  ls
+  468  cd /mnt/fs
+  469  ls
+  470  cd home/vyoma/vyoma-media/conf
+  471  ls
+  472  mkdir etc-monit.d-prs-connoi-single
+  473  mkdir etc-monit.d-uts-single
+  474  mkdir etc-monit.d-uts-db-single
+  475  ls
+  476  ll
+  477  ls
+  478  ll
+  479  cp -v etc-monit.d-prs-connoi/hide-mouse etc-monit.d-prs-connoi-single/
+  480  cp -v etc-monit.d-prs-connoi/logging etc-monit.d-prs-connoi-single/
+  481  cp -v etc-monit.d-prs-connoi/readtty-port1 etc-monit.d-prs-connoi-single/
+  482  cp -v etc-monit.d-prs-connoi/start-ads-screen1 etc-monit.d-prs-connoi-single/
+  483  cp -v etc-monit.d-prs-connoi/start-ticket-screens-screen1 etc-monit.d-prs-connoi-single/
+  484  ls
+  485  cd etc-monit.d-prs-connoi-single/
+  486  ls
+  487  ll
+  488  cd ../
+  489  ls
+  490  chmod -R 755 etc-monit.d-uts-single
+  491  cd etc-monit.d-prs-connoi-single
+  492  ls
+  493  cd ../
+  494  ls
+  495  cd etc-monit.d-prs-connoi-single
+  496  ls
+  497  cd ../
+  498  ls
+  499  cd etc-monit.d-uts
+  500  ls
+  501  cd ../
+  502  ll
+  503  cp -v etc-monit.d-uts/hide-mouse etc-monit.d-uts-single/
+  504  cp -v etc-monit.d-uts/logging etc-monit.d-uts-single/
+  505  cp -v etc-monit.d-uts/readtty-port1 etc-monit.d-uts-single/
+  506  cp -v etc-monit.d-uts/start-ads-screen1 etc-monit.d-uts-single/
+  507  cp -v etc-monit.d-uts/start-ticket-screens-screen1 etc-monit.d-uts-single/
+  508  chmod -R 755 etc-monit.d-uts-single
+  509  cd etc-monit.d-uts-single/
+  510  ls
+  511  ll
+  512  cd ../etc-monit.d-prs-connoi-single/
+  513  ls
+  514  ;;
+  515  ll
+  516  ls
+  517  cd ../
+  518  ls
+  519  cp -v etc-monit.d-uts-db/hide-mouse etc-monit.d-uts-db-single/
+  520  cp -v etc-monit.d-uts-db/logging etc-monit.d-uts-db-single/
+  521  cp -v etc-monit.d-uts-db/readtty-port1 etc-monit.d-uts-db-single/
+  522  cp -v etc-monit.d-uts-db/start-ads-screen1 etc-monit.d-uts-db-single/
+  523  cp -v etc-monit.d-uts-db/start-ticket-screens-screen1 etc-monit.d-uts-db-single/
+  524  ls
+  525  cd etc-monit.d-uts-db-single/
+  526  ls
+  527  ll
+  528  ls
+  529  cd ../
+  530  ls
+  531  ll
+  532  cd ../../../
+  533  cd ../
+  534  cd etc/rc.d/
+  535  vi rc.local 
+  536  cd ../../home/vyoma/vyoma-media/bin/
+  537  ls
+  538  vi sync-usbmedia 
+  539  cd ../conf
+  540  ls
+  541  ll
+  542  cd /opt/LiveCD_World/Developing_Images/Merge_Sync_And_Nonsync/Logcollection/Live/LiveOS/
+  543  ls
+  544  rm -rf squashfs.img 
+  545  ls
+  546  mksquashfs squashfs-root/ squashfs.img -comp xz
+  547  ls
+  548  rm -rf squashfs-root/
+  549  ls
+  550  cd ../../
+  551  ls
+  552  mkisofs -J -r -hide-rr-moved -hide-joliet-trans-tbl -V Vyoma-merge2 -o Vyoma.iso -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-info-table -boot-load-size 4 Live
+  553  ls
+  554  isohybrid  Vyoma.iso
+  555  implantisomd5 Vyoma.iso
+  556  ls
+  557  mount
+  558  umount /dev/sdc1
+  559  ls
+  560  livecd-iso-to-disk  --reset-mbr Vyoma.iso  /dev/sdc1
+  561  ssh pi@kacantoprsf.dyndns-ip.com -p 2210
+  562  cd /opt/
+  563  ls
+  564  cd LiveCD_World/
+  565  ls
+  566  cd Developing_Images/
+  567  ls
+  568  cd Merge_Sync_And_Nonsync/
+  569  ls
+  570  rm -rf Test\ for\ Screen-blank/
+  571  ls
+  572  cd Logcollection/
+  573  ls
+  574  su
+  575  ssh root@192.168.1.120
+  576  rm -rf /root/.ssh/known_hosts 
+  577  ssh root@192.168.1.120
+  578  ssh -D 54321 -v  mahesh@mmonit.vyoma-media.com -p 2222
+  579  ls
+  580  cd /opt/
+  581  ls
+  582  ssh -p 2222 mahesh@mmonit.vyoma-media.com
+  583  ssh root@192.168.1.120
+  584  ssh -D 54321 -v  mahesh@mmonit.vyoma-media.com -p 2222
+  585  ssh root@192.168.1.120
+  586  rm -rf /root/.ssh/known_hosts 
+  587  ssh root@192.168.1.120
+  588  ll
+  589  cd /opt/LiveCD_World/Developing_Images/
+  590  ls
+  591  cd Merge_Sync_And_Nonsync/
+  592  ls
+  593  cd Logcollection/
+  594  ls
+  595  cd Live/LiveOS/
+  596  ls
+  597  unsquashfs squashfs.img 
+  598  ls
+  599  cd squashfs-root/LiveOS/
+  600  ls
+  601  mount ext3fs.img /mnt/fs/ -t ext2 -o loop
+  602  ls
+  603  cd /mnt/fs
+  604  ls
+  605  cd home/vyoma/vyoma-media/bin/
+  606  ls
+  607  vi play-ads.pl 
+  608  cd ../
+  609  cd /opt/LiveCD_World/Developing_Images/Merge_Sync_And_Nonsync/Logcollection/Live/LiveOS/
+  610  ls
+  611  rm -rf squashfs.img 
+  612  ls
+  613  mksquashfs squashfs-root/ squashfs.img -comp xz
+  614  ls
+  615  rm -rf squashfs-root
+  616  cd ../../
+  617  ls
+  618  mkisofs -J -r -hide-rr-moved -hide-joliet-trans-tbl -V Vyoma-merge2 -o Vyoma.iso -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-info-table -boot-load-size 4 Live
+  619  isohybrid  Vyoma.iso
+  620  implantisomd5 Vyoma.iso
+  621  mount
+  622  umount /dev/sdc1
+  623  livecd-iso-to-disk  --reset-mbr Vyoma.iso  /dev/sdc1
+  624  ssh root@kacantoutsb.dyndns-ip.com -p 2204
+  625  ls
+  626  ssh root@ kacantoutsb.dyndns-ip.com -p 2210
+  627  ssh root@kacantoutsb.dyndns-ip.com -p 2210
+  628  cd /opt/LiveCD_World/Developing_Images/
+  629  ls
+  630  cd Merge_Sync_And_Nonsync/Logcollection/
+  631  ls
+  632  rm -rf Live/
+  633  ls
+  634  mount Vyoma.iso  /mnt/Live/ -t iso9660 -o loop
+  635  cp -Rav /mnt/Live .
+  636  ls
+  637  cd Live/LiveOS/
+  638  ls
+  639  unsquashfs squashfs.img 
+  640  ls
+  641  cd squashfs-root/LiveOS/
+  642  ls
+  643  mount ext3fs.img /mnt/fs/ -t ext2 -o loop
+  644  cd /mnt/fs
+  645  ls
+  646  cat BuildVersion/BuildVersion 
+  647  vi BuildVersion/BuildVersion 
+  648  cat BuildVersion/BuildVersion 
+  649  ls
+  650  cd etc/rc.d/
+  651  ls
+  652  vi rc.local 
+  653  cd /
+  654  umount /mnt/fs
+  655  umount /mnt/Live 
+  656  cd /opt/LiveCD_World/Developing_Images/Merge_Sync_And_Nonsync/Logcollection/
+  657  ls
+  658  rm -rf Vyoma.iso 
+  659  ls
+  660  rm -rf *
+  661  ls
+  662  mount Vyoma.iso  /mnt/Live/ -t iso9660 -o loop
+  663  cp -Rav /mnt/Live .
+  664  ls
+  665  cd Live/LiveOS/
+  666  ls
+  667  unsquashfs squashfs.img 
+  668  ls
+  669  cd squashfs-root/LiveOS/
+  670  ls
+  671  mount ext3fs.img /mnt/fs/ -t ext2 -o loop
+  672  ls
+  673  cd /mnt/fs
+  674  ls
+  675  cat BuildVersion/BuildVersion 
+  676  vi BuildVersion/BuildVersion 
+  677  cat BuildVersion/BuildVersion 
+  678  ls
+  679  cd etc/rc.d/
+  680  vi rc.local 
+  681  ls
+  682  vi rc.local 
+  683  cd ../../
+  684  ls
+  685  cd etc/logrotate.d/
+  686  ls
+  687  touch ddis_log
+  688  vi ddis_log 
+  689  cd ../
+  690  ls
+  691  cd ../
+  692  ls
+  693  cd home/vyoma/vyoma-media/bin/
+  694  ls
+  695  vi sync-usbmedia 
+  696  ls
+  697  cd ../
+  698  ls
+  699  cd prs/
+  700  ls
+  701  cd AP/
+  702  ls
+  703  vi BrowserConfig.xml 
+  704  rm -f BrowserConfig.xml 
+  705  ls
+  706  cp -v /media/HDD\ 500/Current_Working/HDMI_Change/HTML-Changes/prs/BrowserConfig.xml .
+  707  ls
+  708  chmod 775 BrowserConfig.xml 
+  709  ls
+  710  vi BrowserConfig.xml 
+  711  ls
+  712  cd ../
+  713  ls
+  714  cd KA/
+  715  ls
+  716  rm BrowserConfig.xml 
+  717  cp -v /media/HDD\ 500/Current_Working/HDMI_Change/HTML-Changes/prs/BrowserConfig.xml .
+  718  ls
+  719  ll
+  720  chmod 775 BrowserConfig.xml 
+  721  ll
+  722  vi BrowserConfig.xml 
+  723  ls
+  724  cd ../
+  725  ls
+  726  cd MH/
+  727  ls
+  728  rm -rf BrowserConfig.xml 
+  729  cp -v /media/HDD\ 500/Current_Working/HDMI_Change/HTML-Changes/prs/BrowserConfig.xml .
+  730  ls
+  731  chmod 775 BrowserConfig.xml 
+  732  ll
+  733  cd ../
+  734  ls
+  735  cd ../
+  736  ls
+  737  cd uts
+  738  ls
+  739  cd AP/
+  740  ls
+  741  rm -f BrowserConfig.xml 
+  742  cp -v /media/HDD\ 500/Current_Working/HDMI_Change/HTML-Changes/prs/BrowserConfig.xml .
+  743  chmod 775 BrowserConfig.xml 
+  744  vi BrowserConfig.xml 
+  745  ll
+  746  cd ../
+  747  ls
+  748  cd KA/
+  749  ls
+  750  rm BrowserConfig.xml 
+  751  cp -v /media/HDD\ 500/Current_Working/HDMI_Change/HTML-Changes/prs/BrowserConfig.xml .
+  752  chmod 775 BrowserConfig.xml 
+  753  ls
+  754  cd ../
+  755  lsd
+  756  ls
+  757  cd MH/
+  758  ls
+  759  rm -f BrowserConfig.xml 
+  760  ls
+  761  cp -v /media/HDD\ 500/Current_Working/HDMI_Change/HTML-Changes/prs/BrowserConfig.xml .
+  762  chmod 775 BrowserConfig.xml 
+  763  vi BrowserConfig.xml 
+  764  ls
+  765  cd ../
+  766  ls
+  767  cd ../
+  768  ls
+  769  cd ../../../
+  770  cd var/www/html/screen1/livedata/
+  771  ls
+  772  ll
+  773  touch name
+  774  touch number
+  775  touch status
+  776  ll
+  777  cd ../
+  778  cd ../screen2/livedata/
+  779  ls
+  780  ll
+  781  touch number
+  782  touch name
+  783  touch status
+  784  ll
+  785  cd ../../../
+  786  cd ../
+  787  cd home/vyoma/vyoma-media/bin/
+  788  vi play-ads.pl 
+  789  cd ../conf
+  790  ls
+  791  mkdir etc-monit.d-prs-connoi-single
+  792  mkdir etc-monit.d-uts-single
+  793  mkdir etc-monit.d-uts-db-single
+  794  ls
+  795  ll
+  796  cp -v etc-monit.d-prs-connoi/hide-mouse etc-monit.d-prs-connoi-single/
+  797  cp -v etc-monit.d-prs-connoi/logging etc-monit.d-prs-connoi-single/
+  798  cp -v etc-monit.d-prs-connoi/readtty-port1 etc-monit.d-prs-connoi-single/
+  799  cp -v etc-monit.d-prs-connoi/start-ads-screen1 etc-monit.d-prs-connoi-single/
+  800  cp -v etc-monit.d-prs-connoi/start-ticket-screens-screen1 etc-monit.d-prs-connoi-single/
+  801  ls etc-monit.d-prs-connoi-single/
+  802  cd ../
+  803  cd conf
+  804  ls
+  805  chmod -R 755 etc-monit.d-prs-connoi-single/
+  806  ls etc-monit.d-prs-connoi-single/
+  807  cp -v etc-monit.d-uts/hide-mouse etc-monit.d-uts-single/
+  808  cp -v etc-monit.d-uts/logging etc-monit.d-uts-single/
+  809  cp -v etc-monit.d-uts/readtty-port1 etc-monit.d-uts-single/
+  810  cp -v etc-monit.d-uts/start-ads-screen1 etc-monit.d-uts-single/
+  811  cp -v etc-monit.d-uts/start-ticket-screens-screen1 etc-monit.d-uts-single/
+  812  chmod -R 755 etc-monit.d-uts-single/
+  813  ls etc-monit.d-uts-single/
+  814  ll
+  815  cp -v etc-monit.d-uts-db/hide-mouse etc-monit.d-uts-db-single/
+  816  cp -v etc-monit.d-uts-db/logging etc-monit.d-uts-db-single/
+  817  cp -v etc-monit.d-uts-db/readtty-port1 etc-monit.d-uts-db-single/
+  818  cp -v etc-monit.d-uts-db/start-ads-screen1 etc-monit.d-uts-db-single/
+  819  cp -v etc-monit.d-uts-db/start-ticket-screens-screen1 etc-monit.d-uts-db-single/
+  820  ls
+  821  chmod -R 755 etc-monit.d-uts-db-single/
+  822  ls
+  823  ls etc-monit.d-uts-db-single/
+  824  cd  etc-monit.d-uts-db-single/
+  825  cat start-ads-screen1 
+  826  cd ../
+  827  cd  etc-monit.d-uts-db-single/
+  828  cat readtty-port1 
+  829  cd ../
+  830  ls
+  831  ll
+  832  pwd
+  833  cd ../bin/
+  834  ls
+  835  vi provisoner 
+  836  cd ../
+  837  ls
+  838  cat BuildVersion/BuildVersion 
+  839  cd /opt/LiveCD_World/Developing_Images/Merge_Sync_And_Nonsync/Logcollection/Live/LiveOS/
+  840  ls
+  841  rm -rf squashfs.img 
+  842  mksquashfs squashfs-root/ squashfs.img -comp xz
+  843  ls
+  844  rm -rf squashfs-root/
+  845  ls
+  846  cd ../../
+  847  ls
+  848  mkisofs -J -r -hide-rr-moved -hide-joliet-trans-tbl -V Vyoma-merge2 -o Vyoma.iso -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-info-table -boot-load-size 4 Live
+  849  isohybrid  Vyoma.iso
+  850  implantisomd5 Vyoma.iso
+  851  ls
+  852  mount | grep LIVE
+  853  umount /dev/sdc1
+  854  livecd-iso-to-disk  --reset-mbr Vyoma.iso  /dev/sdc1
+  855  ls
+  856  ls
+  857  cd /opt/
+  858  L
+  859  ls
+  860  ssh -p 2222 mahesh@mmonit.vyoma-media.com
+  861  ssh root@192.168.1.120
+  862  rm -rf /root/.ssh/known_hosts 
+  863  ssh root@192.168.1.120
+  864  ssh mahesh@ssh root@107.170.35.71 -p 2222
+  865  ssh mahesh@107.170.35.71 -p 2222
+  866  ssh root@107.170.35.71 -p 2222
+  867  ssh mahesh@107.170.35.71 -p 2222
+  868  ssh root@107.170.35.71
+  869  ssh root@192.168.1.120 -p 2222
+  870  su
+  871  ssh mahesh@107.170.35.71 -p 2222
+  872  ssh mahesh@107.170.35.71
+  873  ssh mahesh@107.170.35.71 -p 2222
+  874  exit
+  875  ssh root@192.168.1.120
+  876  cd /opt/LiveCD_World/Developing_Images/Merge_Sync_And_Nonsync/Logcollection/
+  877  ls
+  878  mount | grep LIVE
+  879  umount /dev/sdc1
+  880  livecd-iso-to-disk  --reset-mbr Vyoma.iso  /dev/sdc1
+  881  ssh salil@stage-vyoma-media.com -p 2222
+  882  ssh root@107.170.35.71 -p 2222
+  883  ssh salil@107.170.35.71 -p 2222
+  884  host staging-vyoma-media.com
+  885  ssh salil@107.170.35.71 -p 2222
+  886  exit
+  887  ls
+  888  cd /opt/LiveCD_World/
+  889  ls
+  890  cd Developing_Images/Lite_image_Versions/
+  891  cd ../
+  892  ls
+  893  '
+  894  ls
+  895  cd Merge_Sync_And_Nonsync/Logcollection/
+  896  ls
+  897  cd ../
+  898  ls
+  899  cd ../
+  900  ls
+  901  cd HDMI
+  902  ls
+  903  rm -rf backup-17/
+  904  ls
+  905  rm -rf Live/
+  906  ls
+  907  mount Vyoma.iso  /mnt/Live/ -t iso9660 -o loop
+  908  cp -Rav /mnt/Live .
+  909  ls
+  910  cd Live/LiveOS/
+  911  ls
+  912  unsquashfs squashfs.img 
+  913  ls
+  914  cd squashfs-root/LiveOS/
+  915  ls
+  916  mount ext3fs.img /mnt/fs/ -t ext2 -o loop
+  917  ls
+  918  cd /mnt/fs
+  919  ls
+  920  vi BuildVersion/BuildVersion 
+  921  cat BuildVersion/BuildVersion 
+  922  ls
+  923  cat BuildVersion/BuildVersion 
+  924  cd etc/rc.d/
+  925  vi rc.local 
+  926  cd ../../
+  927  ls
+  928  cd home/vyoma/vyoma-media/
+  929  ls
+  930  cd bin/
+  931  ls
+  932  vi sync-usbmedia 
+  933  ls
+  934  vi sync-usbmedia 
+  935  cd ../../../
+  936  cd ../
+  937  ls
+  938  cd etc/rc.d/
+  939  ls
+  940  vi rc.local 
+  941  cd ../
+  942  ls
+  943  cd ../
+  944  ls
+  945  cd /opt/LiveCD_World/Developing_Images/
+  946  ls
+  947  cd HDMI/Live/LiveOS/
+  948  ls
+  949  rm -rf squashfs.img 
+  950  mksquashfs squashfs-root/ squashfs.img -comp xz
+  951  ls
+  952  rm -rf squashfs-root/
+  953  ls
+  954  cd ../../
+  955  ls
+  956  mkisofs -J -r -hide-rr-moved -hide-joliet-trans-tbl -V Vyoma-merge2 -o Vyoma.iso -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-info-table -boot-load-size 4 Live
+  957  isohybrid  Vyoma.iso
+  958  implantisomd5 Vyoma.iso
+  959  ls
+  960  mount
+  961  umount /dev/sdc1
+  962  livecd-iso-to-disk  --reset-mbr Vyoma.iso  /dev/sdc1
+  963  ssh -p 2222 mahesh@mmonit.vyoma-media.com
+  964  cd /etc/
+  965  ls
+  966  ps -aux
+  967  ls
+  968  ssh root@192.168.1.120
+  969  rm -rf /root/.ssh/known_hosts 
+  970  ssh root@192.168.1.120
+  971  unmae -a
+  972  uname -a
+  973  ls
+  974  l
+  975  ssh root@192.168.1.120
+  976  rm -rf /root/.ssh/known_hosts 
+  977  ssh root@192.168.1.120
+  978  ls
+  979  cd /opt/
+  980  ls
+  981  ll
+  982  livecd-iso-to-disk  --reset-mbr Fedora-16-x86_64-Live-Desktop.iso  /dev/sdc
+  983  umount /dev/sdc
+  984  livecd-iso-to-disk  --reset-mbr Fedora-16-x86_64-Live-Desktop.iso  /dev/sdc
+  985  mount
+  986  fdisk -l
+  987  livecd-iso-to-disk  --reset-mbr Fedora-16-x86_64-Live-Desktop.iso  /dev/sdc1
+  988  cd /media/DATA/
+  989  ls
+  990  chmod 777 *
+  991  chmod -R 777 *
+  992  cd /
+  993  ls
+  994  cd /
+  995  ls
+  996  ssh -p 2222 mahesh@mmonit.vyoma-media.com
+  997  ls
+  998  cd /
+  999  ls
+ 1000  cd /mnt/fs
+ 1001  ls
+ 1002  man yum
+ 1003  ls
+ 1004  yum --installroot=/mnt/fs install yum
+ 1005  yum --installroot=/mnt/fs install glibc-common-2.14.90-14.i686
+ 1006  yum --installroot=/mnt/fs install glibc-common-2.14.90-14
+ 1007  ls
+ 1008  yum --installroot=/mnt/fs/ install yum
+ 1009  yum --installroot=/mnt/fs/ install glibc-common-2.14.90-14.i386
+ 1010  yum --installroot=/mnt/fs/ search glibc-common-2.14.90-14.i386
+ 1011  yum --installroot=/mnt/fs/ search glibc-common.i386
+ 1012  yum --installroot=/mnt/fs/ search glibc.i386
+ 1013  yum --installroot=/mnt/fs/ install glibc.i386
+ 1014  ls
+ 1015  yum --installroot=/mnt/fs/ install yum
+ 1016  yum clean all
+ 1017  yum --installroot=/mnt/fs/ install yum
+ 1018* yum --installroot=/mnt/fs/ install 
+ 1019  yum --installroot=/mnt/fs/ --releasever=/mnt/fs/ install sqlite
+ 1020  yum --installroot=/mnt/fs/ --releasever=/mnt/fs/ install sqlite.i686
+ 1021* yum --installroot=/mnt/fs/ install 
+ 1022  yum --installroot=/mnt/fs/ install sqlite-devel.i686
+ 1023  yum --installroot=/mnt/fs/ install python-sqlite.i686
+ 1024  yum --installroot=/mnt/fs/ install python-pip.i686
+ 1025  yum --installroot=/mnt/fs/ install pyCLI.i686
+ 1026  yum --installroot=/mnt/fs/ install pyserial.i686
+ 1027  yum info yum
+ 1028  yum search python-pip
+ 1029  yum search pip
+ 1030  yum --installroot=/mnt/fs/ install python-pip
+ 1031  yum search python-sqlite
+ 1032  yum --installroot=/mnt/fs/ install python-sqlite
+ 1033  yum --installroot=/mnt/fs/ install python-pip
+ 1034  yum search sqlite
+ 1035  yum search python-sqlite
+ 1036  yum --installroot=/mnt/fs/ install python-sqlite2.i686
+ 1037  pip 
+ 1038  yum search sqlite
+ 1039  yum search sqlite3
+ 1040  sqlite
+ 1041  yum install sqlite
+ 1042  sqlite3 --version
+ 1043  pip
+ 1044  yum install python-pip
+ 1045  yum search sqlite3
+ 1046  yum search python-sqlite
+ 1047  yum --installroot=/mnt/fs/ install python-sqlite3dbm
+ 1048  yum --installroot=/mnt/fs/ install sqlite-devel.i686
+ 1049  pip
+ 1050  pip-python 
+ 1051  pip help
+ 1052  pip-python help
+ 1053  pip-python install pyserial
+ 1054  pip-python install pyCLI
+ 1055  echo $PATH
+ 1056  ls
+ 1057  /usr/lib/python2.7/site-packages
+ 1058  cd /usr/lib/python2.7/site-packages
+ 1059  ls
+ 1060  cd /mnt/fs
+ 1061  ls
+ 1062  cd usr/lib/python2.7/site-packages/
+ 1063  ls
+ 1064  pwd
+ 1065  pip-python install --install-option="--prefix=/mnt/fs/usr/lib/python2.7/site-packages" pyCLI
+ 1066  ls
+ 1067  pip-python install --target /mnt/fs/usr/lib/python2.7/site-packages pyCLI
+ 1068  pip help
+ 1069  pip-python help
+ 1070  man pip-python
+ 1071  ls
+ 1072  pwd
+ 1073  pip-python install --install-option="/mnt/fs/usr/lib/python2.7/site-packages" pyCLI
+ 1074  ls
+ 1075  pip
+ 1076  pip-python
+ 1077  pip-python install --cert /mnt/fs/usr/lib/python2.7/site-packages pyCLI
+ 1078  ls
+ 1079  pwd
+ 1080  cd 
+ 1081  ls
+ 1082  pip-python install -d /mnt/fs/usr/lib/python2.7/site-packages pyCLI
+ 1083  cd /mnt/fs/usr/lib/python2.7/site-packages
+ 1084  ls
+ 1085  tar -xzf pyCLI-2.0.3.tar.gz 
+ 1086  ls
+ 1087  cd cd pyCLI-2.0.3/
+ 1088  ls
+ 1089  cd pyCLI-2.0.3/
+ 1090  ls
+ 1091  vi setup.py 
+ 1092  cd ..
+ 1093  ls
+ 1094  python pyCLI-2.0.3/setup.py  install --prefix=.
+ 1095  ls
+ 1096  cd ..
+ 1097  ls
+ 1098  python pyCLI-2.0.3/setup.py  install --prefix=/mnt/fs/usr/lib/python2.7/site-packages
+ 1099  ls
+ 1100  cd site-packages/
+ 1101  ls
+ 1102  python pyCLI-2.0.3/setup.py  install --prefix=/mnt/fs/usr/lib/python2.7/site-packages
+ 1103  cd pyCLI-2.0.3/
+ 1104  ls
+ 1105  python setup.py  install --prefix=/mnt/fs/usr/lib/python2.7/site-packages
+ 1106  ls
+ 1107  cd ..
+ 1108  ls
+ 1109  /usr/lib/python2.7 setup.py  install --prefix=/mnt/fs/usr/lib/python2.7/site-packages
+ 1110  /mnt/fs/usr/bin/python setup.py  install --prefix=/mnt/fs/usr/lib/python2.7/site-packages
+ 1111  /mnt/fs/usr/bin/python2.7 setup.py  install --prefix=/mnt/fs/usr/lib/python2.7/site-packages
+ 1112  python  setup.py  install --prefix=/mnt/fs/usr/lib/python2.7/site-packages
+ 1113  cd pyCLI-2.0.3/
+ 1114  ls
+ 1115  /mnt/fs/usr/bin/python2.7  setup.py  install --prefix=/mnt/fs/usr/lib/python2.7/site-packages
+ 1116* 
+ 1117  python setup.py  install --prefix=/mnt/fs/usr/lib/python2.7/site-packages
+ 1118  export PYTHONPATH=$PYTHONPATH:/mnt/fs/usr/lib/python2.7/site-packages/
+ 1119  python setup.py  install --prefix=/mnt/fs/usr/lib/python2.7/site-packages
+ 1120  ls
+ 1121  export PYTHONPATH=$PYTHONPATH:/mnt/fs/usr/lib/python2.7/site-packages/
+ 1122  python setup.py  install --prefix=/mnt/fs/usr/lib/python2.7/site-packages
+ 1123  /mnt/fs/usr/bin/python   python setup.py  install --prefix=/mnt/fs/usr/lib/python2.7/site-packages
+ 1124  /mnt/fs/usr/bin/python2.7  setup.py  install --prefix=/mnt/fs/usr/lib/python2.7/site-packages
+ 1125  /mnt/fs/usr/bin/python2.7 setup.py  install --prefix=/mnt/fs/usr/lib/python2.7/site-packages
+ 1126  ls
+ 1127  python setup.py 
+ 1128  python install setup.py 
+ 1129  python setup.py install
+ 1130  ls
+ 1131  cd ../
+ 1132  ls
+ 1133  pwd
+ 1134  ls
+ 1135  cd pyCLI-2.0.3/
+ 1136  ls
+ 1137  cd build/
+ 1138  ls
+ 1139  cd ../
+ 1140  ls
+ 1141  cd ../
+ 1142  ls
+ 1143  python pyCLI-2.0.3/setup.py 
+ 1144  python pyCLI-2.0.3/setup.py install
+ 1145  ls
+ 1146  python pyCLI-2.0.3/setup.py install --prefix=/mnt/fs/usr/lib/python2.7/site-packages/
+ 1147  python pyCLI-2.0.3/setup.py install --prefix=/mnt/fs/usr/lib/python2.7/site-packages
+ 1148  python pyCLI-2.0.3/setup.py --prefix=/mnt/fs/usr/lib/python2.7/site-packages install
+ 1149  python pyCLI-2.0.3/setup.py install --prefix=/mnt/fs/usr/lib/python2.7/site-packages
+ 1150  python pyCLI-2.0.3/setup.py install --prefix=/mnt/fs/usr/
+ 1151  ls
+ 1152  rm -rf pyCLI-2.0.3
+ 1153  ls
+ 1154  ll
+ 1155  ls
+ 1156  rm pyCLI-2.0.3.tar.gz 
+ 1157  ls
+ 1158  pwd
+ 1159  ls
+ 1160  ll
+ 1161  ls pyCLI*
+ 1162  cd../
+ 1163  ls
+ 1164  cp /usr/lib/python2.7/site-packages/pyCLI-2.0.3-py2.7.egg-info /mnt/fs/usr/lib/python2.7/site-packages/
+ 1165  ls
+ 1166  ll
+ 1167  cp /usr/lib/python2.7/site-packages/pyCLI-2.0.3-py2.7.egg-info /mnt/fs/usr/lib/python2.7/site-packages/
+ 1168  cp -Rav /usr/lib/python2.7/site-packages/pyCLI-2.0.3-py2.7.egg-info /mnt/fs/usr/lib/python2.7/site-packages/
+ 1169  ls
+ 1170  ll
+ 1171  ls
+ 1172  cd ../../
+ 1173  ls
+ 1174  cd ../
+ 1175  ls
+ 1176  cd ../
+ 1177  ls
+ 1178  cd home/vyoma/vyoma-media/
+ 1179  ls
+ 1180  cd prs/
+ 1181  ls
+ 1182  cp -Rav /media/HDD\ 500/Current_Working/Composite-software/ddis/prs/readttys .
+ 1183  ls
+ 1184  cd readttys/
+ 1185  ls
+ 1186  cd ../
+ 1187  ls
+ 1188  ll
+ 1189  cd ../
+ 1190  cd prs/
+ 1191  ls
+ 1192  ll
+ 1193  chmod 775 readttys
+ 1194  ls
+ 1195  ll
+ 1196  ls
+ 1197  cd ../
+ 1198  ls
+ 1199  cd bin/
+ 1200  ls
+ 1201  vi start-readtty-port1.sh 
+ 1202  ls
+ 1203  cd ../
+ 1204  ls
+ 1205  cd prs/readttys/
+ 1206  ls
+ 1207  vi readttys.py 
+ 1208  pwd
+ 1209  vi readttys.py
+ 1210  ls
+ 1211  cd ../
+ 1212  ls
+ 1213  cd ../
+ 1214  ls
+ 1215  cd bin/
+ 1216  ls
+ 1217  history
+ 1218  ls
+ 1219  vi start-readtty-port1.sh 
+ 1220  cd ../../
+ 1221  cd pads/indavest/vyoma/
+ 1222  ls
+ 1223  cd prs/
+ 1224  ls
+ 1225  cd ../../
+ 1226  ls
+ 1227  cd ../
+ 1228  ls
+ 1229  cd vyoma-media/bin/
+ 1230  ls
+ 1231  vi start-readtty-port1.sh 
+ 1232  cd /opt/LiveCD_World/Developing_Images/Test-Senthil-code/Live/LiveOS/
+ 1233  ls
+ 1234  rm squashfs.img 
+ 1235  ls
+ 1236  mksquashfs squashfs-root/ squashfs.img -comp xz
+ 1237  ls
+ 1238  history > /media/HDD\ 500/Current_Working/Scripts/change-in-readtty

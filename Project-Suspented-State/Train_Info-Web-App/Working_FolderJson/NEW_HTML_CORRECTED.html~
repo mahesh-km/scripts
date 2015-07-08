@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	
+    <title>train info</title>
+	<script src="http://code.jquery.com/jquery-1.6.1.js"></script>
+    <script type="text/javascript">
+    	
+	$(document).ready(function() {
+    var url =  "http://localhost:8080/TrainStatus/TrainStatusServlet";
+
+
+	$.ajax({
+		url: "http://localhost:8080/TrainStatus/TrainStatusServlet?StationCode=SBC&json=true",
+		}).done(function ( data ) {
+				if( console && console.log ) {
+					console.log("Sample of data:", data.slice(0, 100));
+				}
+			});
+</script>
+
+</head>
+
+</html>

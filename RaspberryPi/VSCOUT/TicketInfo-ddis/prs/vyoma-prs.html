@@ -1,0 +1,736 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<script type="text/javascript" src="vyoma-query.js"></script>
+<script type="text/javascript">
+jQuery(document).ready(function(){
+	var oldFromData="";
+	var oldToData="";
+	var oldData="";
+	jQuery('#train_from_marquee').stop();
+	jQuery('#train_to_marquee').stop();
+	var fileNameArray = new Array('number','name','from','to','class','date','status','adult','child','fare','clerk');
+	window.setInterval(function(){
+		//alert(fileNameArray.length);
+		for(var i=0;i<fileNameArray.length;i++){
+  			//alert(fileNameArray[i]);
+			getData(fileNameArray[i]);
+		}
+	}, 2000);
+	
+function getData(fileName){
+ 	jQuery.ajax({
+		url: 'livedata/'+fileName,
+		context: document.body,
+		cache: false,
+		success: function(data){
+				if(fileName == 'from' && oldFromData  != data){
+					oldFromData = data;
+					if(data.length > 28){
+						data = "<marquee>"+data+"</marquee>";
+					}
+					jQuery('#train_from').html(data);
+				}else if(fileName == 'to' && oldToData  != data){
+					oldToData = data;
+					if(data.length > 28){
+						data = "<marquee>"+data+"</marquee>";
+					}
+					jQuery('#train_to').html(data);
+				}else if(fileName != 'to' && fileName != 'from'){
+					jQuery('#train_'+fileName).html(data);
+				}
+				
+				
+			}
+			
+		
+	});
+	
+}
+});
+</script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Vyoma Technologies Pvt Ltd</title>
+<style type="text/css">
+<!--
+body {
+	font: 100%/1.4 Verdana, Arial, Helvetica, sans-serif;
+	background: #42413C;
+	margin: 0;
+	padding: 0;
+	color: #000;
+	background-color: #FFFFFF;
+	border-spacing: 3;
+}
+
+/* ~~ Element/tag selectors ~~ */
+
+ul, ol, dl
+
+	 { 
+
+  	/* Due to variations between browsers, it's best practices to zero padding and margin on lists. For consistency, you can either specify the amounts you want here, or on the list items (LI, DT, DD) they 		contain. Remember that what you do here will cascade to the .nav list unless you write a more specific selector. */
+
+	padding: 0;
+	margin: 0;
+
+	 }
+
+h1, h2, h3, h4, h5, h6, p
+	 {
+
+	margin-top: 0;	/* removing the top margin gets around an issue where margins can escape from their containing div. The remaining bottom margin will hold it away from any elements that follow. */
+	padding-right: 15px;
+	padding-left: 15px;
+  
+			/* adding the padding to the sides of the elements within the divs, instead of the divs themselves, gets rid of any box model math. A nested div with side padding can also be used as an 				alternate method. */
+
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #C3C;
+
+	}
+
+a img 
+	{ /* this selector removes the default blue border displayed in some browsers around an image when it is surrounded by a link */
+
+	border: none;
+
+	}
+
+	/* ~~ Styling for your site's links must remain in this order - including the group of selectors that create the hover effect. ~~ */
+
+a:link 
+	{
+	color: #42413C;
+	text-decoration: underline; /* unless you style your links to look extremely unique, it's best to provide underlines for quick visual identification */
+	}
+
+a:visited 
+
+	{
+	color: #6E6C64;
+	text-decoration: underline;
+	}
+a:hover, a:active, a:focus 
+
+	{ 
+	/* this group of selectors will give a keyboard navigator the same hover experience as the person using a mouse. */
+	text-decoration: none;
+	}
+
+	/* ~~ this fixed width container surrounds all other elements ~~ */
+.container
+	{
+	width: 1024px;
+	background:url("images/vyoma-back-prs.png") no-repeat scroll 0 0 transparent;
+	margin: 0 auto; /* the auto value on the sides, coupled with the width, centers the layout */
+	}
+
+	/* ~~ This is the layout information. ~~ 
+
+	1) Padding is only placed on the top and/or bottom of the div. The elements within this div have padding on their sides. This saves you from any "box model math". Keep in mind, if you add any side 		padding or border to the div itself, it will be added to the width you define to create the *total* width. You may also choose to remove the padding on the element in the div and place a second div 		within it with no width and the padding necessary for your design.
+
+	*/
+
+.content
+	{
+	width: auto;
+	height: 320px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 20px;
+	background:#ffffff url('images/vyoma-back-320.png') no-repeat;
+	float:left;
+	}
+
+	/* ~~ miscellaneous float/clear classes ~~ */
+
+.fltrt 
+
+	{	 
+	 /* this class can be used to float an element right in your page. The floated element must precede the element it should be next to on the page. */
+	float: right;
+	margin-left: 8px;
+	}
+
+.fltlft 
+
+	{ 
+	/* this class can be used to float an element left in your page. The floated element must precede the element it should be next to on the page. */
+	float: left;
+	margin-right: 8px;
+	}
+
+.clearfloat 
+	{
+	 /* this class can be placed on a <br /> or empty div as the final element following the last floated div (within the #container) if the overflow:hidden on the .container is removed */
+	clear:both;
+	height:0;
+	font-size: 1px;
+	line-height: 0px;
+	}
+
+.trainDetailFields
+	{
+	float:left;
+	/*margin-top:10px;*/
+	}
+
+.trainNameClass
+	{
+	width:482px;
+	float:left;
+	padding-left:25px;
+	padding-bottom:4px;
+	font-size:21px;
+	}
+
+.trainNumberClass
+	{
+	width:453px;
+	float:left;
+	padding-left:64px;
+	font-size:21px;
+	}
+
+.trainNumberInput
+	{
+	width:399px;
+	min-height:34px;
+	text-align:center;
+	background:#ffffff url('images/vyoma-prs-content-back-35.jpg') no-repeat;
+	margin:0 72px 0 35px;
+	float:left;
+	}
+
+.trainNameInput
+	{
+	width:399px;
+	min-height:34px;
+	text-align:center;
+	background:#ffffff url('images/vyoma-prs-content-back-35.jpg') no-repeat;
+	margin:0 33px 0 84px;
+	float:left;
+	}
+
+.trainFromClass
+	{
+	width:482px;
+	float:left;
+	padding-left:25px;
+	font-size:21px;
+	}
+
+.trainToClass
+	{
+	width:453px;
+	float:left;
+	padding-left:64px;
+	font-size:21px;
+	}
+
+.trainFromInput
+	{
+	width:399px;
+	min-height:34px;
+	text-align:center;
+	margin:0 72px 0 35px;
+	background:#ffffff url('images/vyoma-prs-content-back-35.jpg') no-repeat;
+	float:left;
+	}
+
+.trainToInput
+	{
+	width:399px;
+	min-height:34px;
+	text-align:center;
+	margin:0 33px 0 84px;
+	background:#ffffff url('images/vyoma-prs-content-back-35.jpg') no-repeat;
+	float:left;
+	}
+
+.trainBookingDetails
+	{
+	width:152px;
+
+	float:left;
+	margin-left:12px;
+	}
+
+.trainBookingInput
+	{
+	width:140px;
+	float:left;
+	margin-left:35px;
+	background:#ffffff url('images/vyoma-prs-content-short-back-35.jpg') no-repeat;
+	min-height:34px;
+	text-align:center;
+	}
+
+.dateTrainBookingInput
+
+	{
+	width:140px;
+	float:left;
+	margin-left:35px;
+	background:#ffffff url('images/vyoma-prs-content-short-back-35.jpg') no-repeat;
+	min-height:34px;
+	text-align:center;
+	}
+
+.adultChildTrainBookingInput
+	{
+	width:75px;
+	float:left;
+	margin-left:41px;
+	background: url('images/adult-child.jpg') no-repeat;
+	min-height:34px;
+	text-align:center;
+	
+	}
+
+.statusTrainBookingInput
+	{
+	width:215px;
+	float:left;
+	margin-left:35px;
+	background:#ffffff url('images/status.jpg') no-repeat;
+	min-height:34px;
+	text-align:center;
+	}
+
+.tainFareInput
+	{
+	width:156px;
+	float:left;
+	margin-left:25px;
+	background:url('images/rupee.png') no-repeat;
+	min-height:36px;
+	text-align:center;
+	}
+
+.trainDetailFields div div
+	{
+	padding-top:2px;
+	}
+
+.trainBookingInput div
+	{
+	padding-top:3px;
+	}
+
+.tainFareInput div
+	{
+	padding-top:0px;
+	}
+
+#train_clerk
+	{
+	font-weight:bold;
+	}
+-->
+
+</style>
+</head>
+
+ <script src="vyoma-query.js" type="text/javascript"></script>
+    <script type="text/javascript">
+
+   
+      function myfun() {
+		
+		var state;
+		txtdivTN = document.getElementById("Train_Number");
+		txtdivTNH = document.getElementById("Train_NumberH");
+		txtdivTNL = document.getElementById("Train_NumberL");
+
+		txtdivTNM = document.getElementById("Train_Name");
+		txtdivTNMH = document.getElementById("Train_NameH");
+		txtdivTNML = document.getElementById("Train_NameL");
+
+		txtdivF = document.getElementById("From");
+		txtdivFH = document.getElementById("FromH");
+		txtdivFL = document.getElementById("FromL");
+
+		txtdivTO = document.getElementById("To");
+		txtdivTOH = document.getElementById("ToH");
+		txtdivTOL = document.getElementById("ToL");
+
+		txtdivC = document.getElementById("Class");
+		txtdivCH = document.getElementById("ClassH");
+		txtdivCL = document.getElementById("ClassL");
+
+		txtdivD = document.getElementById("Date");
+		txtdivDH = document.getElementById("DateH");
+		txtdivDL = document.getElementById("DateL");
+
+		txtdivS = document.getElementById("Status");
+		txtdivSH = document.getElementById("StatusH");
+		txtdivSL = document.getElementById("StatusL");
+
+		txtdivA = document.getElementById("Adult");
+		txtdivAH = document.getElementById("AdultH");
+		txtdivAL = document.getElementById("AdultL");
+
+		txtdivCHL = document.getElementById("Child");
+		txtdivCHLH = document.getElementById("ChildH");
+		txtdivCHLL = document.getElementById("ChildL");
+
+		txtdivFR = document.getElementById("Fare");
+		txtdivFRH = document.getElementById("FareH");
+		txtdivFRL = document.getElementById("FareL");
+
+		txtdivPH = document.getElementById("Phone");
+		
+
+		$.get("StateConfig.xml", {}, function (xml) {
+        		$('States', xml).each(function (i) {   
+        
+                		if ($(this).find("Current_State").length > 0) {
+
+                        		state = $(this).find("Current_State").text();}						
+								
+            		});	
+				
+   		});		
+
+
+ 		$.get("BrowserConfig.xml", {}, function (xml) {
+ 			$('Train_info', xml).each(function (i) {
+
+                    		if ($(this).find("TE").length > 0) {
+                       			 txtdivTN.innerHTML = $(this).find("TE").text();}					
+		    		if ($(this).find("TH").length > 0) {
+                        		 txtdivTNH.innerHTML = $(this).find("TH").text();}
+
+		    		if ($(this).find("TNE").length > 0) {
+                       			 txtdivTNM.innerHTML = $(this).find("TNE").text();}
+		   		if ($(this).find("TNH").length > 0) {
+                        		 txtdivTNMH.innerHTML = $(this).find("TNH").text();}
+
+		    		if ($(this).find("FE").length > 0) {
+                        		 txtdivF.innerHTML = $(this).find("FE").text();}
+		    		if ($(this).find("FH").length > 0) {
+                        		 txtdivFH.innerHTML = $(this).find("FH").text();}
+
+		    		if ($(this).find("TOE").length > 0) {
+                        		 txtdivTO.innerHTML = $(this).find("TOE").text();}
+		    		if ($(this).find("TOH").length > 0) {
+                        		 txtdivTOH.innerHTML = $(this).find("TOH").text();}
+
+		    		if ($(this).find("CE").length > 0) {
+                        		 txtdivC.innerHTML = $(this).find("CE").text();}
+	            		if ($(this).find("CH").length > 0) {
+                        		 txtdivCH.innerHTML = $(this).find("CH").text();}
+	  
+                    		if ($(this).find("DE").length > 0) {
+                        		 txtdivD.innerHTML = $(this).find("DE").text();}
+	            		if ($(this).find("DH").length > 0) {
+                        		 txtdivDH.innerHTML = $(this).find("DH").text();}
+
+                    		if ($(this).find("SE").length > 0) {
+                        		 txtdivS.innerHTML = $(this).find("SE").text();}
+		    		if ($(this).find("SH").length > 0) {
+                        		 txtdivSH.innerHTML = $(this).find("SH").text();}
+		
+		    		if ($(this).find("AE").length > 0) {
+                        		 txtdivA.innerHTML = $(this).find("AE").text();}
+		    		if ($(this).find("AH").length > 0) {
+                        		 txtdivAH.innerHTML = $(this).find("AH").text();}
+
+		    		if ($(this).find("CHE").length > 0) {
+                        		 txtdivCHL.innerHTML = $(this).find("CHE").text();}
+		    		if ($(this).find("CHH").length > 0) {
+                          		 txtdivCHLH.innerHTML = $(this).find("CHH").text();}
+		     
+                    		if ($(this).find("FRE").length > 0) {
+                        		 txtdivFR.innerHTML = $(this).find("FRE").text();}
+		   		if ($(this).find("FRH").length > 0) {
+                        		 txtdivFRH.innerHTML = $(this).find("FRH").text();}
+		    
+                    				if(state == "KA")
+						{
+						if ($(this).find("TK").length > 0) {			 
+                        				txtdivTNL.innerHTML = $(this).find("TK").text();}
+						if ($(this).find("TNK").length > 0) {			 
+                        				txtdivTNML.innerHTML = $(this).find("TNK").text();}
+						if ($(this).find("FK").length > 0) {			 
+                        				txtdivFL.innerHTML = $(this).find("FK").text();}
+						if ($(this).find("TOK").length > 0) {			 
+                        				txtdivTOL.innerHTML = $(this).find("TOK").text();}
+						if ($(this).find("CK").length > 0) {			 
+                        				txtdivCL.innerHTML = $(this).find("CK").text();}
+						if ($(this).find("DK").length > 0) {			 
+                        				txtdivDL.innerHTML = $(this).find("DK").text();}
+						if ($(this).find("SK").length > 0) {			 
+                        				txtdivSL.innerHTML = $(this).find("SK").text();}
+						if ($(this).find("AK").length > 0) {			 
+                        				txtdivAL.innerHTML = $(this).find("AK").text();}
+						if ($(this).find("CHK").length > 0) {			 
+                        				txtdivCHLL.innerHTML = $(this).find("CHK").text();}
+						if ($(this).find("FRK").length > 0) {			 
+                        				txtdivFRL.innerHTML = $(this).find("FRK").text();}
+						
+						$.get("StateConfig.xml", {}, function (xml) {
+        						$('Phone_Numbers', xml).each(function (i) {   
+        
+                						if ($(this).find("PKA").length > 0) {			 
+                        				txtdivPH.innerHTML = $(this).find("PKA").text();}				
+								
+            		                               });	
+				
+   		                                 });		
+						
+						}
+						else if(state == "AP")
+						{
+						if ($(this).find("TT").length > 0) {			 
+                        				txtdivTNL.innerHTML = $(this).find("TT").text();}
+						if ($(this).find("TNT").length > 0) {			 
+                        				txtdivTNML.innerHTML = $(this).find("TNT").text();}
+						if ($(this).find("FT").length > 0) {			 
+                        				txtdivFL.innerHTML = $(this).find("FT").text();}
+						if ($(this).find("TOT").length > 0) {			 
+                        				txtdivTOL.innerHTML = $(this).find("TOT").text();}
+						if ($(this).find("CT").length > 0) {			 
+                        				txtdivCL.innerHTML = $(this).find("CT").text();}
+						if ($(this).find("DT").length > 0) {			 
+                        				txtdivDL.innerHTML = $(this).find("DT").text();}
+						if ($(this).find("ST").length > 0) {			 
+                        				txtdivSL.innerHTML = $(this).find("ST").text();}
+						if ($(this).find("AT").length > 0) {			 
+                        				txtdivAL.innerHTML = $(this).find("AT").text();}
+						if ($(this).find("CHT").length > 0) {			 
+                        				txtdivCHLL.innerHTML = $(this).find("CHT").text();}
+						if ($(this).find("FRT").length > 0) {			 
+                        				txtdivFRL.innerHTML = $(this).find("FRT").text();}
+
+						$.get("StateConfig.xml", {}, function (xml) {
+        						$('Phone_Numbers', xml).each(function (i) {   
+        
+                						if ($(this).find("PAP").length > 0) {			 
+                        				txtdivPH.innerHTML = $(this).find("PAP").text();}				
+								
+            		                               });	
+				
+   		                                 });		
+						}		
+						else if(state == "MH")
+						{
+						if ($(this).find("TM").length > 0) {			 
+                        				txtdivTNL.innerHTML = $(this).find("TM").text();}
+						if ($(this).find("TNM").length > 0) {			 
+                        				txtdivTNML.innerHTML = $(this).find("TNM").text();}
+						if ($(this).find("FM").length > 0) {			 
+                        				txtdivFL.innerHTML = $(this).find("FM").text();}
+						if ($(this).find("TOM").length > 0) {			 
+                        				txtdivTOL.innerHTML = $(this).find("TOM").text();}
+						if ($(this).find("CM").length > 0) {			 
+                        				txtdivCL.innerHTML = $(this).find("CM").text();}
+						if ($(this).find("DM").length > 0) {			 
+                        				txtdivDL.innerHTML = $(this).find("DM").text();}
+						if ($(this).find("SM").length > 0) {			 
+                        				txtdivSL.innerHTML = $(this).find("SM").text();}
+						if ($(this).find("AM").length > 0) {			 
+                        				txtdivAL.innerHTML = $(this).find("AM").text();}
+						if ($(this).find("CHM").length > 0) {			 
+                        				txtdivCHLL.innerHTML = $(this).find("CHM").text();}
+						if ($(this).find("FRM").length > 0) {			 
+                        				txtdivFRL.innerHTML = $(this).find("FRM").text();}
+
+						$.get("StateConfig.xml", {}, function (xml) {
+        						$('Phone_Numbers', xml).each(function (i) {   
+        
+                						if ($(this).find("PMH").length > 0) {			 
+                        				txtdivPH.innerHTML = $(this).find("PMH").text();}				
+								
+            		                               });	
+				
+   		                                 });		
+						}
+							
+
+						
+						
+
+		});
+ });
+
+							
+
+	
+
+    
+          
+}
+
+
+   </script>
+
+
+   <body onload="myfun()">
+
+	<div class="container">
+
+		<div class="content">
+
+			<div style="float:left;">
+
+				<div style="width:820px;float:left;padding-left:34px;margin-top:8px;font-size:22px;color:#ffffff;margin-bottom:9px;">
+
+					<div style="float:left;width:70px;">Clerk: </div>
+
+					<div id="train_clerk">Harsha</div>
+
+				</div>
+
+			</div>
+
+			
+			<div style="float:left;">
+				
+				<div style="width:150px;text-align:center;color:#ffffff;font-size:15px;"> vyoma-media</div>
+				<div id="Phone" style="width:150px;text-align:center;color:#ffffff;font-size:15px;"></div>
+				
+			</div>
+			
+			<div class="trainDetailFields" style="padding-top:5px;text-align:center;padding-bottom:5px;">
+
+				<div class="trainNameClass">
+
+					<div id ="Train no">	
+						<div id ="Train_Number" style="width:160px;float:left;padding-left:6px;"></div>
+					</div>
+
+
+					<div id ="Train_NumberH"style="width:130px;float:left;"></div>
+					<div id ="Train_NumberL"style="width:135px;float:left;"></div>
+
+				</div>
+				<div class="trainNumberClass">
+
+					<div id ="Train_Name" style="width:130px;float:left;padding-left:15px;"></div>
+					<div id="Train_NameH" style="width:130px;float:left;"></div>
+					<div id="Train_NameL"style="width:130px;float:left;"></div>
+
+				</div>
+			</div>
+
+			<div class="trainDetailFields">
+
+				<div class="trainNumberInput">
+
+					<div id="train_number">Train Number</div>
+				</div>
+
+				<div class="trainNameInput">
+
+					<div id="train_name">Train Name</div>
+				</div>
+			</div>
+			<div class="trainDetailFields" style="padding-top:6px;padding-bottom:4px;">
+
+				<div class="trainFromClass">
+					<div id="From" style="width:165px;float:left;padding-left:25px;"></div>
+					<div id="FromH" style="width:130px;float:left;"></div>
+					<div id="FromL"style="width:130px;float:left;"></div>
+				</div>
+
+				<div class="trainToClass">
+					<div id="To" style="width:150px;float:left;padding-left:25px;"></div>
+					<div id="ToH" style="width:130px;float:left;"></div>
+					<div id="ToL"style="width:130px;float:left;"></div>
+				</div>
+			</div>
+
+			<div class="trainDetailFields">
+
+				<div class="trainFromInput">
+
+					<div id="train_from">Train From</div>
+
+				</div>
+
+				<div class="trainToInput">
+					<div id="train_to">Train To</div>
+				</div>
+			</div>
+
+			<div style="float:left;margin-top:12px;text-align:center;margin-left:18px;">
+				<div style="width:152px;float:left;margin-left:26px;">
+					<div id="Class" style="width:75px;float:left;"></div>
+					<div id="ClassH" style="width:75px;float:left;"></div>
+					<div id="ClassL" "></div>
+				</div>
+
+				<div class="trainBookingDetails">
+					<div id="Date" style="width:75px;float:left;"></div>
+					<div id="DateH" style="width:75px;float:left;"></div>
+					<div id="DateL" ></div>
+				</div>
+
+				<div class="trainBookingDetails"style="width:225px;" >
+					<div id="Status" style="width:113px;float:left;"></div>
+					<div id="StatusH" style="width:106px;float:left;"></div>
+					<div id="StatusL" ></div>
+				</div>
+
+				<div class="trainBookingDetails" style="width:120px;">
+					<div id="Adult" style="width:58px;float:left;"></div>
+					<div id="AdultH" style="width:58px;float:left;"></div>
+					<div id="AdultL"></div>
+				</div>
+
+				<div class="trainBookingDetails" style="width:110px;">
+					<div id="Child" style="width:55px;float:left;"></div>
+					<div id="ChildH" style="width:48px;float:left;"></div>
+					<div id="ChildL"></div>
+				</div>
+
+				<div class="trainBookingDetails" >
+					<div id="Fare" style="width:75px;float:left;"></div>
+					<div id="FareH" style="width:75px;float:left;"></div>
+					<div id="FareL" ></div>
+				</div>
+			</div>
+			<div style="float:left;margin-top:11px;margin-bottom:5px;">
+
+				<div class="trainBookingInput" >
+					<div id="train_class">Class</div>
+				</div>
+
+				<div class="dateTrainBookingInput">
+					<div id="train_date">Date</div>
+				</div>
+
+				<div class="statusTrainBookingInput" >
+					<div id="train_status">Status</div>
+				</div>
+
+				<div class="adultChildTrainBookingInput" >
+					<div id="train_adult">Adult</div>
+				</div>
+
+				<div class="adultChildTrainBookingInput" >
+					<div id="train_child">Child</div>
+				</div>
+
+				<div class="tainFareInput">
+				
+						<div id="train_fare" style="font-size:27px;color:yellow;"> /-</div>
+					
+				</div>
+			</div>
+	
+  <!-- end .content -->
+
+		</div>
+
+<!-- end .container -->
+
+	</div>
+
+   </body>
+
+</html>
+
+

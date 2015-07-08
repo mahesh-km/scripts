@@ -1,0 +1,29 @@
+<html>
+	<head><title>Train Status</title>		
+		
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+    	var myUrl =  "http://localhost:8080/TrainStatus/TrainStatusServlet?StationCode=SBC&json=true";
+
+	$.ajax({type: "GET", url: myUrl, dataType: "json",
+	    	success: function(data){
+	    		if(data){
+	        		alert("worked");
+	       		}
+	    		},
+	    	error: function(){
+	    		alert('not worked.');
+	    	} 
+
+	})
+});
+
+});
+</script>
+</head>
+<body>
+<div id='train-list'></div>
+</body>
+</html>

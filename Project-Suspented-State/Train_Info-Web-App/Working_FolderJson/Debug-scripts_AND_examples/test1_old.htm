@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Untitled Page</title>
+	<script src="jquery-1.3.2.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        function myfun() {
+
+            var loadUrl = "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20WHERE%20symbol%3D%27WRC%27&format=json&diagnostics=true&env=store://datatables.org/alltableswithkeys&callback";
+            $.ajax({
+                type: "POST",
+                url: loadUrl + "?ticks=" + (new Date().getTime() * 10000) + 621355968000000000,
+                dataType: "json",
+                //data: { VendorId: id },
+                success: function (data) {
+                    try {
+
+                        if (data != null) {
+                            $("#td1").html(data.query["created"]);
+                            $("#td2").html(data.query["lang"]);
+                        }
+                    }
+                    catch (err) {
+                        $("#td1").html("0");
+                        $("#td2").html("0");
+                    }
+                },
+                error: function (req, status, error) {
+                    $("#td1").html("0");
+                    $("#td2").html("0");
+                }
+            });
+        }
+    </script>
+    
+    
+  
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <a href="javascript:myfun()">Click</a>
+        <br />       
+        <table id="mytab">
+            <tr>
+                <td id="td1">
+                </td>
+            </tr>
+            <tr>
+                <td id="td2">
+                </td>
+            </tr>
+            <tr>
+                <td id="td3">
+                </td>
+            </tr>
+        </table>
+    </div>
+    </form>
+</body>
+</html>

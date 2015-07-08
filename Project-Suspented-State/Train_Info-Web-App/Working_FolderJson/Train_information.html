@@ -1,0 +1,163 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C// DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>	
+<title>train info</title>
+<style>
+<style>
+#layout
+{
+font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+width:100%;
+border-collapse:collapse;
+}
+#layout td, #layout th 
+{
+font-size:25px;
+border:0px solid #EFF8D0;
+text-align:center;
+padding:5px 7px 2px 7px;
+}
+#layout th 
+{
+font-size:25px;
+text-align:center;
+padding-top:5px;
+padding-bottom:4px;
+background-color:#67A3EC;
+color:#ffffff;
+}
+#layout tr.row td 
+{
+color:#FBFBCF;
+background-color:#484D8E;
+}
+</style>
+<link rel="stylesheet" type="text/css" href="train-info.css">
+<script src="jquery-1.6.1.js"></script>
+<!--<script src="jquery-1.6.1.js"></script>-->
+ <script type="text/javascript">
+ 		
+ 		
+ 		function sleep(milliseconds) {
+  			var start = new Date().getTime();
+ 			for (var i = 0; i < 1e7; i++) {
+ 			//	var curr = new Date().getTime();
+   			 if ((new Date().getTime() - start) > milliseconds){
+  			 break;
+  																									    
+  				 }
+ 			   }
+ 																					 
+ 			 }
+ 																					 
+ 		
+ 		
+ 		var row = new Array();
+   	
+   		var i = 0;
+   		array = [];
+   		
+        function myfun() {
+	 //  var loadUrl = "http://127.0.0.1:8080/NewTrainStatus/TrainStatusServlet?StationCode=NDLS&json=true";
+        var loadUrl = "file:///media/HDD%20500/Current_Working/Train_Info-Web-App/Working_FolderJson/train.txt";
+   		$.ajax({
+                  type: "GET",
+      		      url: loadUrl,
+                  dataType: "json",
+                  data: {},
+                  
+                  success: function (data) {
+                  //alert(data.message);            
+                  try {
+
+                        if (data != null) {
+              	  						  $.each(data, function(key, val){
+              	  						  	
+              	  						  	
+              	  						  								
+              	  						  	
+              	  						  								 $.each(val, function(k, v){
+              	  						  			
+                  									                                               if(k =="train_number" || k =="train_name" || k =="scheduled_arrival" )
+                  									                                               {
+                  									                                               	array.push(v);
+                  									                                               }		
+                                                          				 });
+                                                          				 
+                                                          				 
+                                                          			
+                                                          
+                  				           });  
+                  				           
+                  				           l = array.length;
+                  				           var counter = 0;
+                  				           var i = 0;
+                  				           var row =$("<div class='row'></div>");
+                  				           while(i >= 0)
+                  				           {
+                  				           	if (i<l)
+                  				           	{
+                  				           		
+                  				         		   if(counter < 3)	
+                  				         		   {       
+                  				                    	var vl = array[i];
+                  				           
+                  				                     //	window.alert(vl);
+                  				           				$("<div class='column'>"+vl+"</div>").appendTo(row);
+                  				           				counter++;
+                  				           				i++;
+                  				           			}
+                  				           			else
+                  				           			{
+                  				           			//	window.alert("succee");
+                  				           				row.appendTo('#display');
+                  				           				
+                  				           				counter = 0;
+                  				           				
+                  				           				//window.alert(tr);
+                  				           			}
+                  				              } 	
+                  				              
+                  				           }	
+                          
+                         }
+                                        
+                  }
+                        
+                  catch (error) {
+                        	
+                      $("#td1").html("0");
+                      $("#td2").html("0");
+                            
+                                }
+                                },
+                                
+                  error: function (req, status, error) {
+				      //debugger;
+                      $("#td1").html("01");
+                      $("#td2").html("0");
+                      
+                                }
+                               
+            });
+ 
+        }
+        
+        
+          
+   
+ </script>
+ 
+</head>
+ 
+<body onload="myfun()">
+	
+    <div class="row" id="display">
+	    		<div class="header">TRAIN NUMBER</div>
+	    		<div class="header">TRAIN NAME</div>
+	    		<div class="header">SCHEDULED ARRIVAL</div>
+	    </div>
+   
+</body>
+
+</html>

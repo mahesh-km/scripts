@@ -1,0 +1,455 @@
+
+Stack Exchange
+sign up log in tour help
+
+Raspberry Pi beta
+
+    Questions
+    Tags
+    Users
+    Badges
+    Unanswered
+
+    Ask Question
+
+Tag Info
+info newest frequent votes active unanswered
+About config.txt
+
+The parameters available for the config.txt file will be listed in this wiki. Please note that you edit this file at your own risk, and some settings may harm your device if used incorrectly. Warnings will be listed where appropriate in the following text.
+
+The config.txt file is a collection of property:value pairs. Unless otherwise stated, the first parameter in each section is the default property. Its placed in /boot/config.txt
+
+Details in this wiki have been adapted for easier reading from the works here: http://elinux.org/RPi_config.txt
+Video Mode
+sdtv_mode
+
+Used to set the standard for composite output.
+
+sdtv_mode=0    Normal NTSC
+sdtv_mode=1    Japanese version of NTSC – no pedestal
+sdtv_mode=2    Normal PAL
+sdtv_mode=3    Brazilian version of PAL
+
+sdtv_aspect
+
+The aspect ratio for composite output.
+
+sdtv_aspect=1  4:3
+sdtv_aspect=2  14:9
+sdtv_aspect=3  16:9
+
+sdtv_disable_colourburst
+
+Disables colour burst on composite output. Although the picture will be monochrome, it may be sharper.
+
+sdtv_disable_colourburst=1
+
+hdmi_safe
+
+Use "safe mode" settings to try to boot with maximum hdmi compatibility.
+
+hdmi_safe=1
+
+This is the same as adding the following lines together:
+
+hdmi_force_hotplug=1 
+config_hdmi_boost=4
+hdmi_group=1
+hdmi_mode=1
+disable_overscan=0
+
+hdmi_ignore_edid
+
+Enables the ignoring of EDID/display data
+
+hdmi_ignore_edid=0xa5000080
+
+hdmi_force_edid_audio
+
+Pretends all audio formats are supported by display, allowing passthrough of DTS/AC3 even when not reported as supported.
+
+hdmi_force_edid_audio=1
+
+hdmi_ignore_cec
+
+Pretends CEC is not supported by TV. Avoids bringing (CEC enabled) TV out of standby and channel switch when rebooting.
+
+hdmi_ignore_cec=1
+
+hdmi_force_hotplug
+
+Pretends HDMI hotplug signal is asserted so it appears a HDMI display is attached
+
+hdmi_force_hotplug=1 Use HDMI mode even if no HDMI monitor is detected
+
+hdmi_ignore_hotplug
+
+Pretends HDMI hotplug signal is not asserted so it appears a HDMI display is not attached
+
+hdmi_ignore_hotplug=1 Use composite mode even if HDMI monitor is detected
+
+hdmi_drive
+
+Chooses between HDMI and DVI modes. DVI mode will mean that sound is not transmitted though HDMI. Normal mode will transmit sound if supported.
+
+hdmi_drive= 1 Normal DVI mode 
+hdmi_drive= 2 Normal HDMI mode 
+
+hdmi_group
+
+Defines the HDMI type. This is used by hdmi_mode. Not specifying the group, or setting to 0 will use the preferred group reported by the edid.
+
+hdmi_group=1   CEA
+hdmi_group=2   DMT
+
+    CEA:
+
+    Electronic Industries Alliance (EIA-861B) refers to a CEA/EIA standard which consists of display timing and formats supported by Digital Televisions
+
+    DMT:
+
+    Display Monitor Timings (DMT) are a list of VESA standard pre-defined timings which are commonly used within the Computer industry.
+
+hdmi_mode
+
+Defines screen resolution in CEA or DMT format. The following options are supported:
+
+hdmi_group=1 (CEA):
+
+hdmi_mode=1    VGA
+hdmi_mode=2    480p  60Hz
+hdmi_mode=3    480p  60Hz  H
+hdmi_mode=4    720p  60Hz
+hdmi_mode=5    1080i 60Hz
+hdmi_mode=6    480i  60Hz
+hdmi_mode=7    480i  60Hz  H
+hdmi_mode=8    240p  60Hz
+hdmi_mode=9    240p  60Hz  H
+hdmi_mode=10   480i  60Hz  4x
+hdmi_mode=11   480i  60Hz  4x H
+hdmi_mode=12   240p  60Hz  4x
+hdmi_mode=13   240p  60Hz  4x H
+hdmi_mode=14   480p  60Hz  2x
+hdmi_mode=15   480p  60Hz  2x H
+hdmi_mode=16   1080p 60Hz
+hdmi_mode=17   576p  50Hz
+hdmi_mode=18   576p  50Hz  H
+hdmi_mode=19   720p  50Hz
+hdmi_mode=20   1080i 50Hz
+hdmi_mode=21   576i  50Hz
+hdmi_mode=22   576i  50Hz  H
+hdmi_mode=23   288p  50Hz
+hdmi_mode=24   288p  50Hz  H
+hdmi_mode=25   576i  50Hz  4x
+hdmi_mode=26   576i  50Hz  4x H
+hdmi_mode=27   288p  50Hz  4x
+hdmi_mode=28   288p  50Hz  4x H
+hdmi_mode=29   576p  50Hz  2x
+hdmi_mode=30   576p  50Hz  2x H
+hdmi_mode=31   1080p 50Hz
+hdmi_mode=32   1080p 24Hz
+hdmi_mode=33   1080p 25Hz
+hdmi_mode=34   1080p 30Hz
+hdmi_mode=35   480p  60Hz  4x
+hdmi_mode=36   480p  60Hz  4xH
+hdmi_mode=37   576p  50Hz  4x
+hdmi_mode=38   576p  50Hz  4x H
+hdmi_mode=39   1080i 50Hz  reduced blanking
+hdmi_mode=40   1080i 100Hz
+hdmi_mode=41   720p  100Hz
+hdmi_mode=42   576p  100Hz
+hdmi_mode=43   576p  100Hz H
+hdmi_mode=44   576i  100Hz
+hdmi_mode=45   576i  100Hz H
+hdmi_mode=46   1080i 120Hz
+hdmi_mode=47   720p  120Hz
+hdmi_mode=48   480p  120Hz
+hdmi_mode=49   480p  120Hz H
+hdmi_mode=50   480i  120Hz
+hdmi_mode=51   480i  120Hz H
+hdmi_mode=52   576p  200Hz
+hdmi_mode=53   576p  200Hz H
+hdmi_mode=54   576i  200Hz
+hdmi_mode=55   576i  200Hz H
+hdmi_mode=56   480p  240Hz
+hdmi_mode=57   480p  240Hz H
+hdmi_mode=58   480i  240Hz
+hdmi_mode=59   480i  240Hz H
+
+    Note:
+
+        H means 16:9 variant (of a normally 4:3 mode).
+
+        2x means pixel doubled (i.e. higher clock rate, with each pixel repeated twice)
+
+        4x means pixel quadrupled (i.e. higher clock rate, with each pixel repeated four times)
+
+hdmi_group=2 (DMT):
+
+hdmi_mode=1    640x350   85Hz
+hdmi_mode=2    640x400   85Hz
+hdmi_mode=3    720x400   85Hz
+hdmi_mode=4    640x480   60Hz
+hdmi_mode=5    640x480   72Hz
+hdmi_mode=6    640x480   75Hz
+hdmi_mode=7    640x480   85Hz
+hdmi_mode=8    800x600   56Hz
+hdmi_mode=9    800x600   60Hz
+hdmi_mode=10   800x600   72Hz
+hdmi_mode=11   800x600   75Hz
+hdmi_mode=12   800x600   85Hz
+hdmi_mode=13   800x600   120Hz
+hdmi_mode=14   848x480   60Hz
+hdmi_mode=15   1024x768  43Hz  DO NOT USE
+hdmi_mode=16   1024x768  60Hz
+hdmi_mode=17   1024x768  70Hz
+hdmi_mode=18   1024x768  75Hz
+hdmi_mode=19   1024x768  85Hz
+hdmi_mode=20   1024x768  120Hz
+hdmi_mode=21   1152x864  75Hz
+hdmi_mode=22   1280x768        reduced blanking
+hdmi_mode=23   1280x768  60Hz
+hdmi_mode=24   1280x768  75Hz
+hdmi_mode=25   1280x768  85Hz
+hdmi_mode=26   1280x768  120Hz reduced blanking
+hdmi_mode=27   1280x800        reduced blanking
+hdmi_mode=28   1280x800  60Hz
+hdmi_mode=29   1280x800  75Hz
+hdmi_mode=30   1280x800  85Hz
+hdmi_mode=31   1280x800  120Hz reduced blanking
+hdmi_mode=32   1280x960  60Hz
+hdmi_mode=33   1280x960  85Hz
+hdmi_mode=34   1280x960  120Hz reduced blanking
+hdmi_mode=35   1280x1024 60Hz
+hdmi_mode=36   1280x1024 75Hz
+hdmi_mode=37   1280x1024 85Hz
+hdmi_mode=38   1280x1024 120Hz reduced blanking
+hdmi_mode=39   1360x768  60Hz
+hdmi_mode=40   1360x768  120Hz reduced blanking
+hdmi_mode=41   1400x1050       reduced blanking
+hdmi_mode=42   1400x1050 60Hz
+hdmi_mode=43   1400x1050 75Hz
+hdmi_mode=44   1400x1050 85Hz
+hdmi_mode=45   1400x1050 120Hz reduced blanking
+hdmi_mode=46   1440x900        reduced blanking
+hdmi_mode=47   1440x900  60Hz
+hdmi_mode=48   1440x900  75Hz
+hdmi_mode=49   1440x900  85Hz
+hdmi_mode=50   1440x900  120Hz reduced blanking
+hdmi_mode=51   1600x1200 60Hz
+hdmi_mode=52   1600x1200 65Hz
+hdmi_mode=53   1600x1200 70Hz
+hdmi_mode=54   1600x1200 75Hz
+hdmi_mode=55   1600x1200 85Hz
+hdmi_mode=56   1600x1200 120Hz reduced blanking
+hdmi_mode=57   1680x1050       reduced blanking
+hdmi_mode=58   1680x1050 60Hz
+hdmi_mode=59   1680x1050 75Hz
+hdmi_mode=60   1680x1050 85Hz
+hdmi_mode=61   1680x1050 120Hz reduced blanking
+hdmi_mode=62   1792x1344 60Hz
+hdmi_mode=63   1792x1344 75Hz
+hdmi_mode=64   1792x1344 120Hz reduced blanking
+hdmi_mode=65   1856x1392 60Hz
+hdmi_mode=66   1856x1392 75Hz
+hdmi_mode=67   1856x1392 120Hz reduced blanking
+hdmi_mode=68   1920x1200       reduced blanking
+hdmi_mode=69   1920x1200 60Hz
+hdmi_mode=70   1920x1200 75Hz
+hdmi_mode=71   1920x1200 85Hz
+hdmi_mode=72   1920x1200 120Hz reduced blanking
+hdmi_mode=73   1920x1440 60Hz
+hdmi_mode=74   1920x1440 75Hz
+hdmi_mode=75   1920x1440 120Hz reduced blanking
+hdmi_mode=76   2560x1600       reduced blanking
+hdmi_mode=77   2560x1600 60Hz
+hdmi_mode=78   2560x1600 75Hz
+hdmi_mode=79   2560x1600 85Hz
+hdmi_mode=80   2560x1600 120Hz reduced blanking
+hdmi_mode=81   1366x768  60Hz
+hdmi_mode=82   1080p     60Hz
+hdmi_mode=83   1600x900        reduced blanking
+hdmi_mode=84   2048x1152       reduced blanking
+hdmi_mode=85   720p      60Hz
+hdmi_mode=86   1366x768        reduced blanking
+
+overscan_left
+
+Number of pixels to skip on left.
+overscan_right
+
+Number of pixels to skip on right
+overscan_top
+
+Number of pixels to skip on top
+overscan_bottom
+
+Number of pixels to skip on bottom
+framebuffer_width
+
+Console framebuffer width in pixels. Default is display width minus overscan.
+framebuffer_height
+
+Console framebuffer height in pixels. Default is display height minus overscan.
+framebuffer_depth
+
+Console framebuffer depth in bits per pixel. Default is 16. 8bit is valid, but default RGB palette makes an unreadable screen. 24bit looks better but has corruption issues as of 20120615. 32bit has no corruption issues but needs framebuffer_ignore_alpha=1 and shows the wrong colors as of 20120615.
+framebuffer_ignore_alpha
+
+Set to 1 to disable alpha channel. Helps with 32bit.
+test_mode
+
+Enable test sound/image during boot for manufacturing test.
+disable_l2cache
+
+Disable arm access to GPU's L2 cache. Needs corresponding L2 disabled kernel. Default is 0.
+disable_overscan
+
+Set to 1 to disable overscan.
+config_hdmi_boost
+
+Configure the signal strength of the HDMI interface. Default is 0. Try 4 if you have interference issues with hdmi. 7 is the maximum.
+
+    TODO: Overclocking options
+
+history show excerpt excerpt history
+
+
+19
+
+questions tagged
+config.txt
+Stats
+
+created
+	
+
+1 year ago
+
+viewed
+	
+
+41913 times
+
+active
+	
+
+2 months ago
+
+editors
+	
+
+2
+Top Answerers
+Krzysztof Adamski
+6,6501938
+Xavier Nodet
+27229
+recantha
+1,903312
+Jivings♦
+11.9k65195
+Nathan Dunn
+19527
+more »
+Recent Hot Answers
+Why won't my Raspberry Pi overclock?
+
+Easiest way to return to a known good state when overclocking
+
+How do I increase the terminal font size?
+
+File config.txt with multiple lines is not working
+
+How is memory split by CMA?
+
+more »
+
+Related Tags
+hdmi × 7
+raspbian × 3
+audio × 2
+overclocking × 2
+boot × 2
+output × 2
+screen × 2
+raspbmc × 2
+sd-card × 2
+ssh 
+more related tags
+
+tour help badges blog chat data legal privacy policy work here advertising info mobile contact us feedback
+Technology 	Life / Arts 	Culture / Recreation 	Science 	Other
+
+    Stack Overflow
+    Server Fault
+    Super User
+    Web Applications
+    Ask Ubuntu
+    Webmasters
+    Game Development
+    TeX - LaTeX
+
+	
+
+    Programmers
+    Unix & Linux
+    Ask Different (Apple)
+    WordPress Development
+    Geographic Information Systems
+    Electrical Engineering
+    Android Enthusiasts
+    Information Security
+
+	
+
+    Database Administrators
+    Drupal Answers
+    SharePoint
+    User Experience
+    Mathematica
+    more (14)
+
+	
+
+    Photography
+    Science Fiction & Fantasy
+    Graphic Design
+    Seasoned Advice (cooking)
+    Home Improvement
+    Personal Finance & Money
+    Academia
+    more (10)
+
+	
+
+    English Language & Usage
+    Skeptics
+    Mi Yodeya (Judaism)
+    Travel
+    Christianity
+    Arqade (gaming)
+    Bicycles
+    Role-playing Games
+    more (21)
+
+	
+
+    Mathematics
+    Cross Validated (stats)
+    Theoretical Computer Science
+    Physics
+    MathOverflow
+    more (7)
+
+	
+
+    Stack Apps
+    Meta Stack Exchange
+    Area 51
+    Stack Overflow Careers
+
+site design / logo © 2014 stack exchange inc; user contributions licensed under cc by-sa 3.0 with attribution required
+rev 2014.6.30.1688
+

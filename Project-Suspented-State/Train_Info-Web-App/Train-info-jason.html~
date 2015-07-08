@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="json2.js" type="text/javascript"></script>
+<script type="text/javascript" >
+
+$.getJSON("http://localhost:8080/TrainStatus/TrainStatusServlet?StationCode=SBC&json=true", function (json) {
+    alert(json.result);
+    $.each(json.list, function (i, data) {
+        alert(data.result);
+    });
+});
+
+</script>
+</head>
+<body >
+
+
+
+</body>
+</html>

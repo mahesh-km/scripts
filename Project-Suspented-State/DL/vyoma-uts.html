@@ -1,0 +1,353 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<script type="text/javascript" src="vyoma-query.js"></script>
+<script type="text/javascript">
+
+jQuery(document).ready(function(){
+	var oldFromData="";
+	var oldToData="";
+	var oldData="";
+	jQuery('#train_from_marquee').stop();
+	jQuery('#train_to_marquee').stop();
+	var fileNameArray = new Array('from','to','class','date','train','adult','child','fare','clerk');
+	window.setInterval(function(){
+		//alert(fileNameArray.length);
+		for(var i=0;i<fileNameArray.length;i++){
+  			//alert(fileNameArray[i]);
+			getData(fileNameArray[i]);
+		}
+	}, 2000);
+
+function getData(fileName){
+ 	jQuery.ajax({
+		url: 'livedata/'+fileName,
+		context: document.body,
+		cache: false,
+		success: function(data){
+					jQuery('#train_'+fileName).html(data);
+			}
+
+
+	});
+
+}
+});
+</script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Untitled Document</title>
+<style type="text/css">
+<!--
+body {
+	font: 100%/1.4 Verdana, Arial, Helvetica, sans-serif;
+	background: #42413C;
+	margin: 0;
+	padding: 0;
+	color: #000;
+	background-color: #FFFFFF;
+	border-spacing: 3;
+}
+
+/* ~~ Element/tag selectors ~~ */
+ul, ol, dl { /* Due to variations between browsers, it's best practices to zero padding and margin on lists. For consistency, you can either specify the amounts you want here, or on the list items (LI, DT, DD) they contain. Remember that what you do here will cascade to the .nav list unless you write a more specific selector. */
+	padding: 0;
+	margin: 0;
+}
+h1, h2, h3, h4, h5, h6, p {
+	margin-top: 0;	 /* removing the top margin gets around an issue where margins can escape from their containing div. The remaining bottom margin will hold it away from any elements that follow. */
+	padding-right: 15px;
+	padding-left: 15px; /* adding the padding to the sides of the elements within the divs, instead of the divs themselves, gets rid of any box model math. A nested div with side padding can also be used as an alternate method. */
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #C3C;
+}
+a img { /* this selector removes the default blue border displayed in some browsers around an image when it is surrounded by a link */
+	border: none;
+}
+/* ~~ Styling for your site's links must remain in this order - including the group of selectors that create the hover effect. ~~ */
+a:link {
+	color: #42413C;
+	text-decoration: underline; /* unless you style your links to look extremely unique, it's best to provide underlines for quick visual identification */
+}
+a:visited {
+	color: #6E6C64;
+	text-decoration: underline;
+}
+a:hover, a:active, a:focus { /* this group of selectors will give a keyboard navigator the same hover experience as the person using a mouse. */
+	text-decoration: none;
+}
+
+/* ~~ this fixed width container surrounds all other elements ~~ */
+.container {
+	width: 1024px;
+	background:url("images/vyoma-back-uts.png") no-repeat scroll 0 0 transparent;
+	margin: 0 auto; /* the auto value on the sides, coupled with the width, centers the layout */
+}
+
+/* ~~ This is the layout information. ~~
+
+1) Padding is only placed on the top and/or bottom of the div. The elements within this div have padding on their sides. This saves you from any "box model math". Keep in mind, if you add any side padding or border to the div itself, it will be added to the width you define to create the *total* width. You may also choose to remove the padding on the element in the div and place a second div within it with no width and the padding necessary for your design.
+
+*/
+.content {
+	width: auto;
+	height: 512px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 20px;
+	background:#ffffff url('images/BACKGROUND WITH BOXES.png') no-repeat;
+	float:left;
+}
+
+/* ~~ miscellaneous float/clear classes ~~ */
+.fltrt {  /* this class can be used to float an element right in your page. The floated element must precede the element it should be next to on the page. */
+	float: right;
+	margin-left: 8px;
+}
+.fltlft { /* this class can be used to float an element left in your page. The floated element must precede the element it should be next to on the page. */
+	float: left;
+	margin-right: 8px;
+}
+.clearfloat { /* this class can be placed on a <br /> or empty div as the final element following the last floated div (within the #container) if the overflow:hidden on the .container is removed */
+	clear:both;
+	height:0;
+	font-size: 1px;
+	line-height: 0px;
+}
+
+.trainDetailFields{
+	float:left;
+	/*margin-top:10px;*/
+}
+.trainNameClass{
+	width:400px;
+	float:left;
+	padding-left:1px;
+    text-align:center 
+	font-size:25px;
+}
+.trainNumberClass{
+	width:400px;
+	float:left;
+	padding-left:1px;
+	tex-align:center
+    font-size:25px;
+}	
+.trainNumberInput{
+	width:336px;
+	min-height:89px;
+	text-align:center;
+	background:url('images/FROM-TO DOWN TEMPLATE.png') no-repeat;
+	margin:-5px 0px 0px 22px;
+	float:left;
+}
+.trainNameInput{
+	width:336px;
+	min-height:89px;
+	text-align:center;
+	background:url('images/FROM-TO DOWN TEMPLATE.png') no-repeat;
+	margin:-5px 0px 0px 71px;
+	float:left;
+}
+.trainFromClass{
+	width:482px;
+	float:left;
+	padding-left:25px;
+	font-size:21px;
+}
+.trainToClass{
+	width:453px;
+	float:left;
+	padding-left:64px;
+	font-size:21px;
+}
+.trainFromInput{
+	width:399px;
+	min-height:34px;
+	text-align:center;
+	margin:0 72px 0 35px;
+	background:#ffffff url('images/vyoma-uts-content-back-35.jpg') no-repeat;
+	float:left;
+}
+.trainToInput{
+	width:399px;
+	min-height:34px;
+	text-align:center;
+	margin:0 33px 0 84px;
+	background:#ffffff url('images/vyoma-uts-content-back-35.jpg') no-repeat;
+	float:left;
+}
+.trainBookingDetails{
+	width:152px;
+	float:left;
+	margin-left:12px;
+}
+
+
+.trainBookingDateDetails{
+	width:200px;
+	float:left;
+	margin-left:50px
+
+}
+
+.trainBookingAdultChildDetails{
+	width:200px;
+	float:left;
+	margin-left:30px
+
+}
+
+
+
+
+
+.adultTrainBookingInput{
+	width:176px;
+	float:left;
+    margin-top:4px;
+	margin-left:58px;
+	background: url('images/ADULT-CHILD-DATE DOWN TEMPLATE.png') no-repeat;
+	min-height:54px;
+	text-align:center;
+
+}
+
+.childTrainBookingInput{
+	width:176px;
+	float:left;
+    margin-top:4px;
+	margin-left:70px;
+	background: url('images/ADULT-CHILD-DATE DOWN TEMPLATE.png') no-repeat;
+	min-height:54px;
+	text-align:center;
+
+}
+
+
+
+
+
+.tainFareInput{
+	width:213px;
+	float:right;
+        background:url('images/FARE DOWN TEMPLATE.png') no-repeat; 
+	min-height:221px;
+	text-align:center;
+    margin:-5px 10px 0px 0px
+}
+
+.dateTrainBookingInput{
+	width:176px;
+	float:left;
+    margin-top:4px;
+	margin-left:38px;
+	background:url('images/ADULT-CHILD-DATE DOWN TEMPLATE.png') no-repeat;
+	min-height:54px;
+	text-align:center;
+}
+
+
+.trainDetailFields div div{
+	padding-top:0px;
+}
+
+.trainBookingInput div{
+	padding-top:3px;
+}
+
+
+
+#train_clerk{
+	font-weight:bold;
+	font-size:34px;
+	float:left;
+}
+-->
+
+</style></head>
+
+<body>
+
+<div class="container">
+
+	<div class="content">
+		<div style="float:left;">
+		<div style="width:820px;float:left;padding-left:34px;font-size:20px;color:#ffffff;">
+    	<div style="float:left;width:138px;padding-top:12px;">Operator: </div><span id="train_clerk"></span></div>
+	
+
+
+	<div style="float:right;font-size:23px">
+	<div class="trainDetailFields" style="padding-top:25px;text-align:center;padding-bottom:5px;">
+
+		<div class="trainNameClass">
+        	<div style="width:50px;float:left;padding-left:70px;">From</div>
+            <div style="width:70px;float:left;padding-left:90px;">कहाँ से</div>   
+		</div>
+
+		<div class="trainNumberClass">
+        	<div style="width:70px;float:left;padding-left:70px;">To</div>
+            <div style="width:50;float:left;padding-left:90px">कहाँ तक</div>
+		</div>
+
+		
+	</div>
+
+	<div class="trainBookingDetails" style="padding-top:25px;text-align:center;padding-bottom:5px;">
+	<div style="width:40px;float:left;padding-left:30px">Fare</div>
+	<div style="width:40px;float:left;padding-left:30px;">किराया</div>
+	</div>
+
+	<div class="trainDetailFields">
+            
+
+		<div class="trainNumberInput" style="padding-top:30px;">
+        	    <div id="train_from"></div>
+		</div>
+		<div class="trainNameInput" style="padding-top:30px;">
+		    <div id="train_to"></div>
+	       	</div>
+           
+	</div>
+
+   	<div class="tainFareInput">
+                <div style="padding-top:75px;font-size:64px;">
+		<div id="train_fare"></div>
+                </div>
+	</div> 
+
+
+
+    <div style="float:left;text-align:left;margin-left:10px;"> 
+    
+
+	
+  
+    <div class="trainBookingDateDetails">
+    	<div style="width:40px;float:left;padding-left:10px;";>Date</div>
+    	<div style="width:40px;float:left;padding-left:35px;"> दिनांक </div>
+    </div>    
+
+	<div class="trainBookingAdultChildDetails">
+    	<div style="width:40px;float:left;padding-left:5px">Adult</div>
+    	<div style="width:40px;float:left;padding-left:40px"> वयस्क </div>
+    </div>
+
+     
+	<div class="trainBookingAdultChildDetails">
+ 	   <div style="width:55px;float:left;padding-left:30px;">Child</div>
+ 	   <div style="width:48px;float:left;padding-left:25px;"> शिशु </div>
+ 	</div>
+	
+	
+   
+    <div style="float:above;margin-top:-50px;margin-bottom:1px;">   
+
+	<div class="dateTrainBookingInput"  style="padding-top:7px;"><div id="train_date"></div></div>	
+	<div class="adultTrainBookingInput" style="padding-top:7px;"><div id="train_adult"></div></div>
+	<div class="childTrainBookingInput" style="padding-top:7px;"><div id="train_child"></div></div>
+
+	
+<!-- end .content --></div>
+<!-- end .container --></div>
+
+
+</body></html>

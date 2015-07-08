@@ -1,0 +1,82 @@
+
+array = [];
+var masterTimer = 0;
+var myTime1;
+var myTime2;
+var myTime3;
+var myTime4;
+var myTime5;
+var myTime6;
+var myTime7;
+var myTime8;
+var myTime9;
+var myTime10;
+function myfun() {
+		var t = 1;
+	    var loadUrl = "http://localhost:8080/NewTrainStatus/TrainStatusServlet?StationCode=NDLS&json=true";
+		//var loadUrl = "file:///media/HDD%20500/Current_Working/Train_Info-Web-App/Working_FolderJson/dep1/train.txt";
+        $.ajax({
+                  type: "GET",
+      	          url: loadUrl,
+                  dataType: "json",
+                  data: {},
+                  success: function (data) {          
+                  try {
+
+                        if (data != null) {
+                        				  var i = 0;
+              	  						  $.each(data, function(key, val){
+              	  						  					$.each(val, function(k, v){
+                  														if(k =="train_number" || k =="train_name" || k =="scheduled_arrival" )
+                  														{
+	                 														array.push(v);
+	                 													}
+                  												});
+                  					      });
+                  					      display_info();
+                  		}
+                     }
+                  catch (error) {
+                     			  window.alert("error!");
+                                }
+                                },
+               });
+ 
+         }   
+Array.prototype.clear = function()
+{
+	array.length = 0;
+}    			 
+function display_info(){
+			 l = array.length;
+    		 var order = 0;
+    		 var v = 1;
+    		 var count = 0;
+             for(var i = 0; i<l; i++)
+   			 {
+   			 	if(order < 15)
+   			 	{
+   			 	var vl = array[i];
+   			 	$("<div class='column'>"+vl+"</div>").appendTo('#display1');
+   			 	order++;
+   			 	}        					
+    	     else
+    	     {
+    	     setInterval(function(){
+    	     	//	window.alert("hai");
+   			 		$('#display1 div').remove();
+   			 		order = 0;
+   			 		display_info();
+   			 	},1000);
+   			 }
+   			 }
+          
+ }
+ 
+//refresh
+setInterval(function(){
+		array.clear();	    
+        $('#display1 div').remove();
+	    myfun();
+	},330000);   	
+

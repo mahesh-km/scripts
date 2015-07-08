@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Untitled Page</title>
+    <script src="http://code.jquery.com/jquery-1.6.1.js"></script>
+    <script type="text/javascript">
+        function myfun() {
+                    
+            var loadUrl = "file:/media/HDD\\\500/Current_Working/Train_Info-Web-App/train.txt";
+
+            $.ajax({
+                type: "GET",
+                url: loadUrl + "?ticks=" + (new Date().getTime() * 10000) + 621355968000000000,
+                dataType: "json",
+                data: {},
+
+                success: function (data) {
+                    try {
+
+                        if (data != null) {
+                            $("#td1").html(data[0].train_number);                            
+                        }
+                    }
+                    catch (err) {
+                        $("#td1").html("02");
+                        $("#td2").html("0");
+                    }
+                },
+                error: function (req, status, error) {
+
+                    $("#td1").html("01");
+                    $("#td2").html("0");
+                }
+            });
+        }
+       
+    </script>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <a href="javascript:myfun()">Click</a>
+        <br />
+        <table id="mytab">
+            <tr>
+                <td id="td1">
+                </td>
+            </tr>
+            <tr>
+                <td id="td2">
+                </td>
+            </tr>
+            <tr>
+                <td id="td3">
+                </td>
+            </tr>
+        </table>
+    </div>
+    </form>
+</body>
+</html>

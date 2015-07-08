@@ -1,0 +1,278 @@
+#!/bin/bash
+# provisions the installation
+
+##  /mnt/config/character
+#   hostname  screens  state  ticketing_type
+#
+
+
+hostname `cat /mnt/config/character/hostname`
+
+
+state=`cat /mnt/config/character/state`
+screens=`cat /mnt/config/character/screens`
+ticketing=`cat /mnt/config/character/ticketing_type`
+clock=`cat /mnt/config/character/clock`
+
+if [ "$clock" == "on" ]
+then
+    ln -s /mnt/playlist/clock/Vyoma_Clock.html  /var/www/html/screen1/Vyoma_Clock.html
+    ln -s /mnt/playlist/clock/vyomaCanvas.js  /var/www/html/screen1/vyomaCanvas.js
+    ln -s /mnt/playlist/clock/vyomaClock.js  /var/www/html/screen1/vyomaClock.js	
+    ln -s /mnt/playlist/clock/vyoma_logo01.png  /var/www/html/screen1/vyoma_logo01.png
+
+    ln -s /mnt/playlist/clock/Vyoma_Clock.html  /var/www/html/screen2/Vyoma_Clock.html
+    ln -s /mnt/playlist/clock/vyomaCanvas.js  /var/www/html/screen2/vyomaCanvas.js
+    ln -s /mnt/playlist/clock/vyomaClock.js  /var/www/html/screen2/vyomaClock.js	
+    ln -s /mnt/playlist/clock/vyoma_logo01.png  /var/www/html/screen2/vyoma_logo01.png	
+fi	
+##STATE
+
+## DELHI
+if [ "$state" == "DL" ]
+then
+    if [ "$ticketing" == "uts" ]
+    then
+
+    ln -s /home/vyoma/vyoma-media/uts/DL/images  /var/www/html/screen1/images
+    ln -s /home/vyoma/vyoma-media/uts/DL/vyoma-uts.html /var/www/html/screen1/vyoma-uts.html
+    ln -s /home/vyoma/vyoma-media/uts/DL/vyoma-query.js /var/www/html/screen1/vyoma-query.js
+
+
+    ln -s /home/vyoma/vyoma-media/uts/DL/images  /var/www/html/screen2/images
+    ln -s /home/vyoma/vyoma-media/uts/DL/vyoma-uts.html /var/www/html/screen2/vyoma-uts.html
+    ln -s /home/vyoma/vyoma-media/uts/DL/vyoma-query.js /var/www/html/screen2/vyoma-query.js
+
+    ln -s /home/vyoma/vyoma-media/uts/DL/TrainDB.xml /home/vyoma/vyoma-media/uts/TrainDB.xml
+    fi
+
+    if [ "$ticketing" == "uts-db" ]
+    then
+
+    ln -s /home/vyoma/vyoma-media/uts/DL/images  /var/www/html/screen1/images
+    ln -s /home/vyoma/vyoma-media/uts/DL/vyoma-uts.html /var/www/html/screen1/vyoma-uts-db.html
+    ln -s /home/vyoma/vyoma-media/uts/DL/vyoma-query.js /var/www/html/screen1/vyoma-query.js
+
+
+    ln -s /home/vyoma/vyoma-media/uts/DL/images  /var/www/html/screen2/images
+    ln -s /home/vyoma/vyoma-media/uts/DL/vyoma-uts.html /var/www/html/screen2/vyoma-uts-db.html
+    ln -s /home/vyoma/vyoma-media/uts/DL/vyoma-query.js /var/www/html/screen2/vyoma-query.js
+
+    ln -s /home/vyoma/vyoma-media/uts/DL/TrainDB.xml /home/vyoma/vyoma-media/uts/TrainDB.xml
+    fi
+   
+    if [ "$ticketing" == "prs" ]
+    then
+    ln -s /home/vyoma/vyoma-media/prs/DL/images  /var/www/html/screen1/images
+    ln -s /home/vyoma/vyoma-media/prs/DL/vyoma-prs.html /var/www/html/screen1/vyoma-prs.html
+    ln -s /home/vyoma/vyoma-media/prs/DL/vyoma-query.js /var/www/html/screen1/vyoma-query.js
+
+
+    ln -s /home/vyoma/vyoma-media/prs/DL/images  /var/www/html/screen2/images
+    ln -s /home/vyoma/vyoma-media/prs/DL/vyoma-prs.html /var/www/html/screen2/vyoma-prs.html
+    ln -s /home/vyoma/vyoma-media/prs/DL/vyoma-query.js /var/www/html/screen2/vyoma-query.js
+
+    ln -s /home/vyoma/vyoma-media/prs/DL/TrainDB.xml /home/vyoma/vyoma-media/prs/TrainDB.xml
+    fi
+
+fi
+
+
+## KARNATAKA
+if [ "$state" == "KA" ]
+then
+    if [ "$ticketing" == "uts" ]
+    then
+
+    ln -s /home/vyoma/vyoma-media/uts/KA/images  /var/www/html/screen1/images
+    ln -s /home/vyoma/vyoma-media/uts/KA/vyoma-uts.html /var/www/html/screen1/vyoma-uts.html
+    ln -s /home/vyoma/vyoma-media/uts/KA/vyoma-query.js /var/www/html/screen1/vyoma-query.js
+
+
+    ln -s /home/vyoma/vyoma-media/uts/KA/images  /var/www/html/screen2/images
+    ln -s /home/vyoma/vyoma-media/uts/KA/vyoma-uts.html /var/www/html/screen2/vyoma-uts.html
+    ln -s /home/vyoma/vyoma-media/uts/KA/vyoma-query.js /var/www/html/screen2/vyoma-query.js
+
+    ln -s /home/vyoma/vyoma-media/uts/KA/TrainDB.xml /home/vyoma/vyoma-media/uts/TrainDB.xml
+    fi
+
+    if [ "$ticketing" == "uts-db" ]
+    then
+
+    ln -s /home/vyoma/vyoma-media/uts/KA/images  /var/www/html/screen1/images
+    ln -s /home/vyoma/vyoma-media/uts/KA/vyoma-uts.html /var/www/html/screen1/vyoma-uts-db.html
+    ln -s /home/vyoma/vyoma-media/uts/KA/vyoma-query.js /var/www/html/screen1/vyoma-query.js
+
+
+    ln -s /home/vyoma/vyoma-media/uts/KA/images  /var/www/html/screen2/images
+    ln -s /home/vyoma/vyoma-media/uts/KA/vyoma-uts.html /var/www/html/screen2/vyoma-uts-db.html
+    ln -s /home/vyoma/vyoma-media/uts/KA/vyoma-query.js /var/www/html/screen2/vyoma-query.js
+
+    ln -s /home/vyoma/vyoma-media/uts/KA/TrainDB.xml /home/vyoma/vyoma-media/uts/TrainDB.xml
+    fi
+
+    if [ "$ticketing" == "prs" ]
+    then
+    ln -s /home/vyoma/vyoma-media/prs/KA/images  /var/www/html/screen1/images
+    ln -s /home/vyoma/vyoma-media/prs/KA/vyoma-prs.html /var/www/html/screen1/vyoma-prs.html
+    ln -s /home/vyoma/vyoma-media/prs/KA/vyoma-query.js /var/www/html/screen1/vyoma-query.js
+
+
+    ln -s /home/vyoma/vyoma-media/prs/KA/images  /var/www/html/screen2/images
+    ln -s /home/vyoma/vyoma-media/prs/KA/vyoma-prs.html /var/www/html/screen2/vyoma-prs.html
+    ln -s /home/vyoma/vyoma-media/prs/KA/vyoma-query.js /var/www/html/screen2/vyoma-query.js
+
+    ln -s /home/vyoma/vyoma-media/prs/KA/TrainDB.xml /home/vyoma/vyoma-media/prs/TrainDB.xml
+    fi
+
+fi
+
+## ANDHRA
+if [ "$state" == "AP" ]
+then
+
+    if [ "$ticketing" == "uts" ]
+    then
+
+    ln -s /home/vyoma/vyoma-media/uts/AP/images  /var/www/html/screen1/images
+    ln -s /home/vyoma/vyoma-media/uts/AP/vyoma-uts.html /var/www/html/screen1/vyoma-uts.html
+    ln -s /home/vyoma/vyoma-media/uts/AP/vyoma-query.js /var/www/html/screen1/vyoma-query.js
+
+
+    ln -s /home/vyoma/vyoma-media/uts/AP/images  /var/www/html/screen2/images
+    ln -s /home/vyoma/vyoma-media/uts/AP/vyoma-uts.html /var/www/html/screen2/vyoma-uts.html
+    ln -s /home/vyoma/vyoma-media/uts/AP/vyoma-query.js /var/www/html/screen2/vyoma-query.js
+
+    ln -s /home/vyoma/vyoma-media/uts/AP/TrainDB.xml /home/vyoma/vyoma-media/uts/TrainDB.xml
+
+    fi
+    if [ "$ticketing" == "uts-db" ]
+    then
+
+    ln -s /home/vyoma/vyoma-media/uts/AP/images  /var/www/html/screen1/images
+    ln -s /home/vyoma/vyoma-media/uts/AP/vyoma-uts.html /var/www/html/screen1/vyoma-uts-db.html
+    ln -s /home/vyoma/vyoma-media/uts/AP/vyoma-query.js /var/www/html/screen1/vyoma-query.js
+
+
+    ln -s /home/vyoma/vyoma-media/uts/AP/images  /var/www/html/screen2/images
+    ln -s /home/vyoma/vyoma-media/uts/AP/vyoma-uts.html /var/www/html/screen2/vyoma-uts-db.html
+    ln -s /home/vyoma/vyoma-media/uts/AP/vyoma-query.js /var/www/html/screen2/vyoma-query.js
+
+    ln -s /home/vyoma/vyoma-media/uts/AP/TrainDB.xml /home/vyoma/vyoma-media/uts/TrainDB.xml
+   
+
+    fi
+    if [ "$ticketing" == "prs" ]
+    then
+
+    ln -s /home/vyoma/vyoma-media/prs/AP/images  /var/www/html/screen1/images
+    ln -s /home/vyoma/vyoma-media/prs/AP/vyoma-prs.html /var/www/html/screen1/vyoma-prs.html
+    ln -s /home/vyoma/vyoma-media/prs/AP/vyoma-query.js /var/www/html/screen1/vyoma-query.js
+
+
+    ln -s /home/vyoma/vyoma-media/prs/AP/images  /var/www/html/screen2/images
+    ln -s /home/vyoma/vyoma-media/prs/AP/vyoma-prs.html /var/www/html/screen2/vyoma-prs.html
+    ln -s /home/vyoma/vyoma-media/prs/AP/vyoma-query.js /var/www/html/screen2/vyoma-query.js
+
+    ln -s /home/vyoma/vyoma-media/prs/AP/TrainDB.xml /home/vyoma/vyoma-media/prs/TrainDB.xml
+
+    fi
+fi
+	
+## MAHARASTHRA
+if [ "$state" == "MH" ]
+then
+    if [ "$ticketing" == "uts" ]
+    then
+
+    ln -s /home/vyoma/vyoma-media/uts/MH/images  /var/www/html/screen1/images 
+    ln -s /home/vyoma/vyoma-media/uts/MH/vyoma-uts.html /var/www/html/screen1/vyoma-uts.html
+    ln -s /home/vyoma/vyoma-media/uts/MH/vyoma-query.js /var/www/html/screen1/vyoma-query.js
+
+
+    ln -s /home/vyoma/vyoma-media/uts/MH/images  /var/www/html/screen2/images
+    ln -s /home/vyoma/vyoma-media/uts/MH/vyoma-uts.html /var/www/html/screen2/vyoma-uts.html
+    ln -s /home/vyoma/vyoma-media/uts/MH/vyoma-query.js /var/www/html/screen2/vyoma-query.js
+
+    ln -s /home/vyoma/vyoma-media/uts/MH/TrainDB.xml /home/vyoma/vyoma-media/uts/TrainDB.xml
+
+    fi
+
+    if [ "$ticketing" == "uts-db" ]
+    then
+
+    ln -s /home/vyoma/vyoma-media/uts/MH/images  /var/www/html/screen1/images
+    ln -s /home/vyoma/vyoma-media/uts/MH/vyoma-uts.html /var/www/html/screen1/vyoma-uts-db.html
+    ln -s /home/vyoma/vyoma-media/uts/MH/vyoma-query.js /var/www/html/screen1/vyoma-query.js
+
+
+    ln -s /home/vyoma/vyoma-media/uts/MH/images  /var/www/html/screen2/images
+    ln -s /home/vyoma/vyoma-media/uts/MH/vyoma-uts.html /var/www/html/screen2/vyoma-uts-db.html
+    ln -s /home/vyoma/vyoma-media/uts/MH/vyoma-query.js /var/www/html/screen2/vyoma-query.js
+
+    ln -s /home/vyoma/vyoma-media/uts/MH/TrainDB.xml /home/vyoma/vyoma-media/uts/TrainDB.xml
+    fi
+
+
+    if [ "$ticketing" == "prs" ]
+    then
+
+    ln -s /home/vyoma/vyoma-media/prs/MH/images  /var/www/html/screen1/images
+    ln -s /home/vyoma/vyoma-media/prs/MH/vyoma-prs.html /var/www/html/screen1/vyoma-prs.html
+    ln -s /home/vyoma/vyoma-media/prs/MH/vyoma-query.js /var/www/html/screen1/vyoma-query.js
+
+
+    ln -s /home/vyoma/vyoma-media/prs/MH/images  /var/www/html/screen2/images
+    ln -s /home/vyoma/vyoma-media/prs/MH/vyoma-prs.html /var/www/html/screen2/vyoma-prs.html
+    ln -s /home/vyoma/vyoma-media/prs/MH/vyoma-query.js /var/www/html/screen2/vyoma-query.js
+
+    ln -s /home/vyoma/vyoma-media/prs/MH/TrainDB.xml /home/vyoma/vyoma-media/prs/TrainDB.xml
+
+    fi
+fi
+##STATE_END
+
+
+##PRS/URS
+
+# PRS
+
+if [ "$ticketing" == "prs" ]
+then
+    ln -s /home/vyoma/vyoma-media/conf/etc-monit.d-prs-connoi /home/vyoma/vyoma-media/conf/etc-monit.d 
+    crontab /home/vyoma/vyoma-media/conf/crontab.root.prs
+fi
+
+
+
+#UTS
+
+if [ "$ticketing" == "uts" ]
+then
+    ln -s /home/vyoma/vyoma-media/conf/etc-monit.d-uts /home/vyoma/vyoma-media/conf/etc-monit.d 	
+    crontab /home/vyoma/vyoma-media/conf/crontab.root.uts
+fi
+
+
+
+##UTS DUMB
+if [ "$ticketing" == "uts-db" ]
+then
+    ln -s /home/vyoma/vyoma-media/conf/etc-monit.d-uts-db /home/vyoma/vyoma-media/conf/etc-monit.d 	
+    crontab /home/vyoma/vyoma-media/conf/crontab.root.uts
+fi
+
+
+
+##PRS/US_END
+
+
+
+
+
+
+	
+
+
+
+

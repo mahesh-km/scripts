@@ -1,0 +1,252 @@
+ setInterval(function(){
+                	  $('#display1').hide(500);
+    				  $('#display3').hide();
+    			      $('#display4').hide();
+             		  $('#display5').hide();
+                      $('#display6').hide();
+                      $('#display7').hide();
+                      $('#display8').hide();
+                      $('#display9').hide();
+                      $('#display10').hide();
+                	  $('#display2').show(1000);
+                },30000); 
+                setInterval(function(){
+                	  $('#display1').hide();
+    				  $('#display2').hide(500);
+    			      $('#display4').hide();
+             		  $('#display5').hide();
+                      $('#display6').hide();
+                      $('#display7').hide();
+                      $('#display8').hide();
+                      $('#display9').hide();
+                      $('#display10').hide();
+                  	  $('#display3').show(1000);
+                },60000);     
+                setInterval(function(){
+                	  $('#display1').hide();
+    				  $('#display2').hide();
+    			      $('#display3').hide(500);
+             		  $('#display5').hide();
+                      $('#display6').hide();
+                      $('#display7').hide();
+                      $('#display8').hide();
+                      $('#display9').hide();
+                      $('#display10').hide();
+                	  $('#display4').show(1000);
+                },90000);
+                setInterval(function(){
+                	 $('#display4').hide(500);
+                     $('#display5').show(1000);
+                },120000);
+                setInterval(function(){
+                    $('#display5').hide(500);
+                	$('#display6').show(1000);
+                },150000);
+                setInterval(function(){
+                    $('#display6').hide(500);
+                	$('#display7').show(1000);
+                },180000);
+                setInterval(function(){
+                	$('#display7').hide(500);
+                	$('#display8').show(1000);
+                },210000);
+                setInterval(function(){
+                    $('#display8').hide(500);
+                	$('#display9').show(1000);
+                },240000);
+                setInterval(function(){
+                	$('#display9').hide(500);
+                	$('#display10').show(1000);
+                },270000);
+                setInterval(function(){
+                    $('#display10').hide(500);
+                	$('#display1').show(1000);
+                },300000);
+                
+                
+                
+                 
+    		  	ln = div.length;
+  		  		setTimeout(function(){
+    		  		var d = div[n];
+    		  	
+                	$(old).hide(500);
+    		  		$(d).show(1000);
+    		  		old = d;
+    		  		n++;
+    		  	},5000); 
+    		  	
+    		  	
+    		  	
+    		  	
+    		  	c++;
+           			if(c == 1)
+           			{
+           				div.push("#display1");
+           			}
+           			
+           			
+           			
+           			
+           			c++;
+           			if(c == 16)
+           			{
+           				div.push("#display2");
+           			}
+           			
+           			
+           			
+           			
+           			
+           			
+           			
+           			
+           			
+           			c++;
+           			if(c == 31)
+           			{
+           				div.push("#display3");
+           			}
+           			
+           			
+           			///////////////////////////////////////////////////////////////////////////////////////////////////////////
+           			
+           			setInterval(function(){
+                	  $('#display1').hide(500);
+    				  $('#display3').hide();
+    			      $('#display4').hide();
+             		  $('#display5').hide();
+                      $('#display6').hide();
+                      $('#display7').hide();
+                      $('#display8').hide();
+                      $('#display9').hide();
+                      $('#display10').hide();
+                	  $('#display2').show(1000);
+                },30000); 
+                setInterval(function(){
+                	  $('#display1').hide();
+    				  $('#display2').hide(500);
+    			      $('#display4').hide();
+             		  $('#display5').hide();
+                      $('#display6').hide();
+                      $('#display7').hide();
+                      $('#display8').hide();
+                      $('#display9').hide();
+                      $('#display10').hide();
+                  	  $('#display3').show(1000);
+                },60000);     
+                setInterval(function(){
+                	  $('#display1').hide();
+    				  $('#display2').hide();
+    			      $('#display3').hide(500);
+             		  $('#display5').hide();
+                      $('#display6').hide();
+                      $('#display7').hide();
+                      $('#display8').hide();
+                      $('#display9').hide();
+                      $('#display10').hide();
+                	  $('#display4').show(1000);
+                },90000);
+                setInterval(function(){
+                	  $('#display1').hide();
+    				  $('#display2').hide();
+    			      $('#display3').hide();
+             		  $('#display4').hide(500);
+                      $('#display6').hide();
+                      $('#display7').hide();
+                      $('#display8').hide();
+                      $('#display9').hide();
+                      $('#display10').hide();
+                      $('#display5').show(1000);
+                },120000);
+                setInterval(function(){
+                	  $('#display1').hide();
+    				  $('#display2').hide();
+    			      $('#display3').hide();
+    			      $('#display4').hide();
+             		  $('#display5').hide(500);
+                      $('#display6').hide();
+                      $('#display7').hide();
+                      $('#display8').hide();
+                      $('#display9').hide();
+                      $('#display10').hide();
+                	  $('#display6').show(1000);
+                },150000);
+                setInterval(function(){
+                	  $('#display1').hide();
+    				  $('#display2').hide();
+    			      $('#display3').hide();
+    			      $('#display4').hide();
+             		  $('#display5').hide();
+                      $('#display6').hide(500);
+                      $('#display8').hide();
+                      $('#display9').hide();
+                      $('#display10').hide();
+                	  $('#display7').show(1000);
+                },180000);
+                setInterval(function(){
+                	  $('#display1').hide();
+    				  $('#display2').hide();
+    			      $('#display3').hide();
+    			      $('#display4').hide();
+             		  $('#display5').hide();
+                      $('#display6').hide();
+                      $('#display7').hide(500);
+                      $('#display9').hide();
+                      $('#display10').hide();
+                	  $('#display8').show(1000);
+                },210000);
+                setInterval(function(){
+                	  $('#display1').hide();
+    				  $('#display2').hide();
+    			      $('#display3').hide();
+    			      $('#display4').hide();
+             		  $('#display5').hide();
+                      $('#display6').hide();
+                      $('#display7').hide();
+                      $('#display8').hide(500);
+                      $('#display10').hide();
+                      $('#display9').show(1000);
+                },240000);
+                setInterval(function(){
+                	  $('#display1').hide();
+    				  $('#display2').hide();
+    			      $('#display3').hide();
+    			      $('#display4').hide();
+             		  $('#display5').hide();
+                      $('#display6').hide();
+                      $('#display7').hide();
+                      $('#display8').hide();
+                      $('#display9').hide(500);
+                      $('#display10').show(1000);
+                },270000);
+                setInterval(function(){
+    				  $('#display2').hide();
+    			      $('#display3').hide();
+    			      $('#display4').hide();
+             		  $('#display5').hide();
+                      $('#display6').hide();
+                      $('#display7').hide();
+                      $('#display8').hide();
+                    $('#display10').hide(500);
+                	$('#display1').show(1000);
+                },300000);
+           			
+           			
+           			
+           			
+           			
+           			
+           			
+           			
+           			
+           			
+           			
+           			
+           			
+           			
+           			
+           			
+           			
+           			
+           			

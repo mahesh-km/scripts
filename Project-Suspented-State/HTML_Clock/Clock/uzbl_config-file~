@@ -1,0 +1,2 @@
+uzbl-core -c /home/eBoard/config -g
+${display_width}x${display_height}+${display_x_offset}+${display_y_offset} http://

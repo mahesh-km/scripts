@@ -1,0 +1,6 @@
+svn co https://github.com/vyoma-media/dashboard
+svn add .
+svn add app/filename
+svn status
+svn rename
+svn move

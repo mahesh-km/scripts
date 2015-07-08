@@ -1,0 +1,6 @@
+
+
+echo "hello" | mail -s "test mail" maheshkm@depaul.edu.in
+
+mail -s "TEST MAIL" maheshkm@depaul.edu.in < /opt/auto.log
+

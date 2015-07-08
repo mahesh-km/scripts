@@ -1,0 +1,53 @@
+<html>
+<body>
+<title> VTPLLive </title>
+<head>
+<style>
+body
+{
+background-color:#d0e4fe;
+}
+h1
+{
+color:blue;
+text-align:center;
+}
+p
+{
+font-family:"Times New Roman";
+font-size:20px;
+}
+</style>
+
+</head>
+ 	<body>
+	<h1>VTPL Network </h1>
+	&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+	<a href="index.html">Home</a>&nbsp&nbsp&nbsp&nbsp
+	<a href="peoples.htnl">Peoples</a>&nbsp&nbsp&nbsp&nbsp
+	<a href="holyday.html">Holydays</a>&nbsp&nbsp&nbsp&nbsp
+	<a 
+
+
+
+
+
+
+
+</body>
+
+
+
+
+
+
+<?php
+
+
+
+
+
+
+?>
+</html>
+

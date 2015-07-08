@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Config_file>
+
+    <States> 
+        <Current_State>KA</Current_State>       
+    </States>
+
+    <Phone_Numbers>
+	<PKA>+91 9972848919</PKA>
+	<PAP>040 40031924</PAP>
+	<PMH>040 40031924</PMH>
+    </Phone_Numbers>	
+	
+</Config_file>

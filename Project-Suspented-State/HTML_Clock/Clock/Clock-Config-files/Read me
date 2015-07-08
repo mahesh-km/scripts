@@ -1,0 +1,5 @@
+1) "clock" file is a monit starter file , that will be included in each monit files in vyoma-media/config/etc-monit...  uts ,prs ,uts-db.
+2) "clock.py" file clock core starter written python included in bin.
+3) "start_clock.sh" is bash script for starting bash clock if it is 'on', and included in bin.
+
+

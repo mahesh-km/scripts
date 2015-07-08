@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>	
+		<title>train info</title>
+		<link rel="stylesheet" type="text/css" href="css/train-info.js">
+		<script src="js/train-info.js"></script>
+		<script src="http://code.jquery.com/jquery-1.6.1.js"></script>
+	</head>
+	 
+	<body onload="myfun()" bgcolor="#23393F">
+	    <div id="layout">
+	        <table id="display" width="100%" rules="rows" align="center">
+	        	<tr>
+	        	 	<th>Train Number</th>
+	 			 <th>Train Name</th>
+	  			 <th>Scheduled Arrival</th>
+			</tr>
+	        </table>    
+	    </div>
+</body>
+</html>

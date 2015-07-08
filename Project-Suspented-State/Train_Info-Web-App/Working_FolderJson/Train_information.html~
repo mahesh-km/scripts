@@ -1,0 +1,204 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>	
+<title>train info</title>
+<style>
+<style>
+#layout
+{
+font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+width:100%;
+border-collapse:collapse;
+}
+#layout td, #layout th 
+{
+font-size:25px;
+border:0px solid #EFF8D0;
+text-align:center;
+padding:5px 7px 2px 7px;
+}
+#layout th 
+{
+font-size:25px;
+text-align:center;
+padding-top:5px;
+padding-bottom:4px;
+background-color:#67A3EC;
+color:#ffffff;
+}
+#layout tr.row td 
+{
+color:#FBFBCF;
+background-color:#484D8E;
+}
+</style>
+<script src="http://code.jquery.com/jquery-1.6.1.js"></script>
+<!--<script src="jquery-1.6.1.js"></script>-->
+ <script type="text/javascript">
+ 		
+ 		
+ 		function sleep(milliseconds) {
+  			var start = new Date().getTime();
+ 			for (var i = 0; i < 1e7; i++) {
+ 			//	var curr = new Date().getTime();
+   			 if ((new Date().getTime() - start) > milliseconds){
+  			 break;
+  																									    
+  				 }
+ 			   }
+ 																					 
+ 			 }
+ 																					 
+ 		
+ 		
+ 		var row = new Array();
+   	
+   		var i = 0;
+   		
+        function myfun() {
+	//	var t = 1;
+	//	var loadUrl = "http://127.0.0.1:8080/NewTrainStatus/TrainStatusServlet?StationCode=NDLS&json=true";
+        var loadUrl = "file:///media/HDD%20500/Current_Working/Train_Info-Web-App/Working_FolderJson/train.txt";
+   		// var loadUrl = "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20WHERE%20symbol%3D%27WRC%27&format=json&diagnostics=true&env=store://datatables.org/alltableswithkeys&callback";
+   		//	var loadUrl = "file:///home/vyoma/data.txt";
+   			
+   		
+            $.ajax({
+                  type: "GET",
+      	         // url: loadUrl + "?ticks=" + (new Date().getTime() * 10000) + 621355968000000000,
+      	         // url: loadUrl + (new Date().getTime() * 10000) + 621355968000000000,
+      		      url: loadUrl,
+                  dataType: "json",
+                  data: {},
+                  
+                  success: function (data) {
+                  //alert(data.message);            
+                  try {
+
+                        if (data != null) {
+              	  						  $.each(data, function(key, val){
+              	  						  	
+              	  						  	
+              	  						  								 var tr=$('<tr id="slide" class="row"></tr>');
+              	  						  	
+              	  						  								 $.each(val, function(k, v){
+              	  						  			
+                  									                                               if(k =="train_number" || k =="train_name" || k =="scheduled_arrival" )
+                  									                                               {
+                  									                                               	     //	row [i] = v;
+                                                                 									   // 	window.alert(row);
+                  									          		                         		$('<td>'+v+'</td>').appendTo(tr);
+                  									          		                         			
+                 											     									}		
+                                                          				 });
+                                                          				 
+                                                          				
+																//	   tr.appendTo('#display');
+																
+                                                          				tr.appendTo(row[i]);		
+                                                          				 
+                                                          				window.alert(row); 
+                                                          				
+                                                          			//	 var n = $('#display tr').length;	
+                  																	
+                  													//	if (n == 4)
+                  													//	{
+                  															
+                  													//		window.setInterval(function(){
+                  																
+                  																//	$("#display td").hide();
+																		//			$("#display tr:gt(0)").remove();
+  																								
+																			//				}, 10000);
+                  															 
+                  														
+                  																	
+                  														
+                  															
+                 			                  						
+                 			                  						     
+                  				           });
+                  																	
+                  																	
+                  						  // $("#td1").html(data[0].train_number);
+              						          //  $("#td2").html(data[0].train_name);
+                					        //   $("#td3").html(data[0].scheduled_departure);
+                   						    //   alert(data.message);
+                 						       // $("#td1").html(data.query["created"]);
+               							       //  $("#td2").html(data.query["lang"]);
+               							     //  table(row);
+             
+                                        }
+                                        
+                                       }
+                        
+                  catch (error) {
+                        	
+                      $("#td1").html("0");
+                      $("#td2").html("0");
+                            
+                                }
+                                },
+                                
+                  error: function (req, status, error) {
+				      //debugger;
+                      $("#td1").html("01");
+                      $("#td2").html("0");
+                      
+                                }
+            });
+ 
+        }
+          
+          
+ //   function table (array) {
+ //   	for(var l = 0; l<array.length; l++)
+  //  	{
+ ///   		document.write(array[i]);
+ //   		document.write('<br/>')
+  //  	}
+    	
+    	
+ //  }      
+          
+          
+    //background="bg.png"      
+      
+          
+ </script>
+ 
+</head>
+ 
+<body onload="myfun()"  bgcolor="#23393F">
+	
+	
+
+	
+    <div id="layout">
+      
+        <table id="display" width="100%" "rows" align="center">
+        	<tr>
+        	 <th>Train Number</th>
+ 			 <th>Train Name</th>
+  			 <th>Scheduled Arrival</th>
+			</tr>
+        </table>    
+    
+  <!--      <table id="mytab" border="1">
+            <tr>
+                <td id="td1">
+                </td>
+            </tr>
+            <tr>
+                <td id="td2">
+                </td>
+            </tr>
+           
+            
+  </table> -->
+    
+    </div>
+   
+</body>
+
+</html>
