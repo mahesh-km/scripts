@@ -21,6 +21,9 @@ IP_FILE="/home/bhadr/notadded_ipaddress_collect"
 
 echo " " | tee -a $LOG
 
+# for a date range
+# sed -n '/5\/Nov\/2010/,/5\/Dec\/2010/ p'
+
 for ip in `sed -n "/${DATE}\/${MONTH}\/${YEAR}/,$ p" $LOG | grep -e "xmlrpc.php" -e "wp-login.php" | grep -v -e "EN(" | awk '{print $1}' | sort | uniq`
 do
   CHECK_IP_EXIST=`sudo iptables -L fail2ban-wp-auth -n -v | grep $ip`
