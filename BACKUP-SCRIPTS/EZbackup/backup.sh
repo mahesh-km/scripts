@@ -20,7 +20,7 @@ mkdir mysql_dump
 cat backup.db | while read line
 do
 filename=$line.sql
-mysqldump -u root -pPoison@3 $line>mysql_dump/$filename
+mysqldump -u root -p <password> $line>mysql_dump/$filename
 done
 #
 tar -cvzf mysql_dump.tgz mysql_dump/
